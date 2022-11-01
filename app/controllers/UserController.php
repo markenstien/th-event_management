@@ -38,7 +38,7 @@
 
 				$res = $this->model->register($post , 'profile');
 
-				Flash::set( $this->model->getMessageString().  " Please Check your email '{$post['email']}' and verify your account. ");
+				Flash::set( $this->model->getMessageString().  " Please Check your email '{$post['username']}' and verify your account. ");
 
 				if(!$res) {
 					Flash::set( $this->model->getErrorString() , 'danger');
@@ -59,13 +59,10 @@
 				'value' => 'patient',
 				'name'  => 'user_type'
 			]);
-
-			$this->_form_address->remove('submit');
-
+			
 			$data = [
 				'title' => 'User Registration',
-				'form'  => $this->_form,
-				'form_address' => $this->_form_address
+				'form'  => $this->_form
 			];
 
 			return $this->view('user/register' , $data);

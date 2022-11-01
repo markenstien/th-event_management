@@ -19,7 +19,7 @@
 
 			$this->addAddress();
 			$this->addPhoneNumber();
-			$this->addEmal();
+			$this->addEmail();
 			$this->addUsername();
 			$this->addPassword();
 			$this->addUserType();
@@ -102,7 +102,7 @@
 				'name' => 'birthdate',
 				'class' => 'form-control',
 				'options' => [
-					'label' => 'Birth Day'
+					'label' => 'Date of birth'
 				],
 
 				'attributes' => [
@@ -137,13 +137,14 @@
 				'name' => 'address',
 				'class' => 'form-control',
 				'options' => [
-					'label' => 'Address',
+					'label' => 'Address (Brgy*, City*)',
 				],
 
 				'attributes' => [
 					'id' => 'id_address',
 					'rows' => 3
-				]
+				],
+				'required' => true
 			]);
 		}
 
@@ -160,11 +161,12 @@
 				'attributes' => [
 					'id' => 'id_phone_number',
 					'placeholder' => 'Eg. 09xxxxxxxxx'
-				]
+				],
+				'required' => true
 			]);
 		}
 
-		public function addEmal()
+		public function addEmail()
 		{
 			$this->add([
 				'type' => 'email',
@@ -177,7 +179,8 @@
 				'attributes' => [
 					'id' => 'id_email',
 					'placeholder' => 'Enter Valid Email'
-				]
+				],
+				'required' => true
 			]);
 		}
 

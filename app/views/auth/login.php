@@ -6,6 +6,7 @@
 				<div class="card-header">
 					<h4 class="card-title">Login-Form</h4>
 					<p>Welcome to <span class="badge bg-warning"><?php echo COMPANY_NAME?></span> Portal</p>
+					<?php echo wLinkDefault(_route('home:index'), 'Back to main page')?>
 				</div>
 				<div class="card-body">
 					<?php 

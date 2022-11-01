@@ -4,13 +4,13 @@
 * Licensed under ThemeForest License
 */
 
-// Theme style for demo4 (Horizontal Layout - Dark, Dark-RTL)
+// Theme style for demo3 (Horizontal Layout - Light, Light-RTL, Dark-header)
 
 
 
 
 // Custom variables
-@import '../theme-dark/variables';
+@import '../theme-light/variables';
 @import './variables';
 
 
@@ -101,22 +101,22 @@
 @import '../common/components/email/inbox';
 
 // 3rd-Party plugin overrides
-@import "../theme-dark/components/plugin-overrides/ace";
-@import "../theme-dark/components/plugin-overrides/apex-charts";
-@import "../theme-dark/components/plugin-overrides/bootstrap-datepicker";
-@import "../theme-dark/components/plugin-overrides/data-tables";
-@import "../theme-dark/components/plugin-overrides/dropify";
-@import "../theme-dark/components/plugin-overrides/dropzone";
-@import "../theme-dark/components/plugin-overrides/full-calendar";
-@import "../theme-dark/components/plugin-overrides/jquery-flot";
-@import "../theme-dark/components/plugin-overrides/morrisjs";
-@import "../theme-dark/components/plugin-overrides/peity";
-@import "../theme-dark/components/plugin-overrides/perfect-scrollbar";
-@import "../theme-dark/components/plugin-overrides/sweet-alert";
-@import "../theme-dark/components/plugin-overrides/select2";
-@import "../theme-dark/components/plugin-overrides/simplemde";
-@import "../theme-dark/components/plugin-overrides/tags-input";
-@import "../theme-dark/components/plugin-overrides/tempusdominus-bootstrap-4";
-@import "../theme-dark/components/plugin-overrides/tinymce";
-@import "../theme-dark/components/plugin-overrides/typeahead";
-@import "../theme-dark/components/plugin-overrides/wizard";
+@import "../theme-light/components/plugin-overrides/ace";
+@import "../theme-light/components/plugin-overrides/apex-charts";
+@import "../theme-light/components/plugin-overrides/bootstrap-datepicker";
+@import "../theme-light/components/plugin-overrides/data-tables";
+@import "../theme-light/components/plugin-overrides/dropify";
+@import "../theme-light/components/plugin-overrides/dropzone";
+@import "../theme-light/components/plugin-overrides/full-calendar";
+@import "../theme-light/components/plugin-overrides/jquery-flot";
+@import "../theme-light/components/plugin-overrides/morrisjs";
+@import "../theme-light/components/plugin-overrides/peity";
+@import "../theme-light/components/plugin-overrides/perfect-scrollbar";
+@import "../theme-light/components/plugin-overrides/sweet-alert";
+@import "../theme-light/components/plugin-overrides/select2";
+@import "../theme-light/components/plugin-overrides/simplemde";
+@import "../theme-light/components/plugin-overrides/tags-input";
+@import "../theme-light/components/plugin-overrides/tempusdominus-bootstrap-4";
+@import "../theme-light/components/plugin-overrides/tinymce";
+@import "../theme-light/components/plugin-overrides/typeahead";
+@import "../theme-light/components/plugin-overrides/wizard";

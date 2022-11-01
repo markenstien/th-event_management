@@ -38,7 +38,7 @@ License: For each use you must have a valid license purchased only from above li
     <!-- endinject -->
 
   <!-- Layout styles -->  
-    <link rel="stylesheet" href="<?php echo _path_tmp('assets/css/demo4/style.css')?>">
+    <link rel="stylesheet" href="<?php echo _path_tmp('assets/css/demo3/style.css')?>">
   <!-- End layout styles -->
 
   <!-- <link rel="shortcut icon" href="<?php echo _path_tmp('assets/images/favicon.png')?>" /> -->

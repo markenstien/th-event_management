@@ -58,6 +58,10 @@
 			return $this->view('auth/login' , $data);
 		}
 
+		public function register() {
+			
+		}
+
 		public function logout()
 		{
 			session_destroy();

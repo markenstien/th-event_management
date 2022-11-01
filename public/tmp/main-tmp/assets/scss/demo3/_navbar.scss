@@ -34,7 +34,7 @@
         transition: opacity .5s ease;
         font-weight: 700;
         font-size: 25px;
-        color: $body-color;
+        color: darken($primary, 50%);
         display: flex;
         align-items: center;
         direction: ltr#{'/*rtl:ignore*/'};
@@ -96,7 +96,7 @@
             min-width: 21px;
           }
           .nav-link {
-            color: $text-muted;
+            color: $body-color;
             padding: 0;
             position: relative;
             margin-left: auto;
@@ -187,9 +187,9 @@
     align-items: center;
     transition-duration: 3s;
     transition-property: position,left,right,top,z-index;
-    box-shadow: 3px 0 10px 0 #03060b;
-    -webkit-box-shadow: 3px 0 10px 0 #03060b;
-    -moz-box-shadow: 3px 0 10px 0 #03060b;
+    box-shadow: 3px 0 10px 0 rgba(183,192,206,.2);
+    -webkit-box-shadow: 3px 0 10px 0 rgba(183,192,206,.2);
+    -moz-box-shadow: 3px 0 10px 0 rgba(183,192,206,.2);
     @include media-breakpoint-down(lg) {
       display: none;
       &.header-toggled {
@@ -251,7 +251,7 @@
         }
 
         > .nav-link {
-          color: $text-muted;
+          color: $body-color;
           padding: 22px 10px;
           line-height: 1;
           font-weight: 400;
@@ -265,7 +265,7 @@
             font-weight: 400;
             width: 18px;
             height: 18px;
-            fill: none;
+            fill: rgba(233, 236, 239, 0.21);
             color: inherit;
           }
 
@@ -365,7 +365,7 @@
               a {
                 display: block;
                 padding: 3px 10px;
-                color: $text-muted;
+                color: $body-color;
                 text-decoration: none;
                 text-align: left;
                 margin: 4px 0;
@@ -530,5 +530,42 @@
     top: 0;
     left: 0;
     right: 0;
+  }
+}
+
+.navbar-dark {
+  .horizontal-menu {
+    .navbar {
+      background: $navbar-dark-bg;
+      border-bottom-color: rgba($border-color, .1);
+      .navbar-brand {
+        color: $light;
+      }
+      .search-form {
+        .input-group {
+          .input-group-text {
+            background: transparent;
+            color: $text-muted;
+          }
+          input {
+            background-color: transparent;
+            color: $text-muted;
+          }
+        }
+      }
+    }
+    .bottom-navbar {
+      background: $navbar-dark-bg;
+      .page-navigation {
+        > .nav-item {
+          > .nav-link {
+            color: $text-muted;
+            .link-icon {
+              fill: none;
+            }
+          }
+        }
+      }
+    }
   }
 }

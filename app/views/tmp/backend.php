@@ -43,7 +43,7 @@ License: For each use you must have a valid license purchased only from above li
 <!-- endinject -->
 
 <!-- Layout styles -->  
-<link rel="stylesheet" href="<?php echo _path_tmp('assets/css/demo4/style.css')?>">
+<link rel="stylesheet" href="<?php echo _path_tmp('assets/css/demo3/style.css')?>">
 <!-- End layout styles -->
 
 <link rel="shortcut icon" href="<?php echo _path_tmp('assets/images/favicon.png')?>" />
@@ -117,7 +117,7 @@ License: For each use you must have a valid license purchased only from above li
                                       <img class="wd-80 ht-80 rounded-circle" src="https://via.placeholder.com/80x80" alt="">
                                     </div>
                                     <div class="text-center">
-                                      <p class="tx-16 fw-bolder"><?php echo $auth->firstname . ' '.$auth->lastname?></p>
+                                      <p class="tx-16 fw-bolder"><?php echo $auth->first_name . ' '.$auth->last_name?></p>
                                       <p class="tx-12 text-muted"><?php echo $auth->user_type ?></p>
                                     </div>
                                   </div>

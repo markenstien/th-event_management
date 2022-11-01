@@ -56,21 +56,9 @@
 			$fillable_datas = $this->getFillablesOnly($user_data);
 
 			$validated = $this->validate($fillable_datas , $id );
-
 			if(!$validated) return false;
+		
 
-
-			/*
-			*update address info
-			*/
-
-			$address_model = model('AddressModel');
-
-			$address_id = $user_data['address_id'] ?? null;
-
-			$address_id = $address_model->createOrUpdate($user_data , $address_id);
-
-			$fillable_datas['address_id'] = $address_id;
 			if( !is_null($id) )
 			{
 				//change password also
@@ -86,29 +74,9 @@
 				$user_id = $id;
 			}else
 			{
+				$fillable_datas['is_verified'] = true;
 				$fillable_datas['user_code'] = $this->generateCode($user_data['user_type']);
 				$user_id = parent::store($fillable_datas);
-			}
-
-			$is_doctor = isEqual($user_data['user_type'] , 'doctor');
-
-			if( $is_doctor )
-			{
-				//load doctormodel
-				$this->doctor_model = model('DoctorModel');
-
-				$is_doctor_lincensed_valid = $this->doctor_model->validateLicensedNumber($user_data['license_number']);
-
-				if(!$is_doctor_lincensed_valid){
-					$this->addError( $this->doctor_model->getErrorString() );
-					return false;
-				}
-
-				$this->doctor_model->save([
-					'license_number' => $user_data['license_number'],
-					'user_id'        => $user_id
-				]);
-
 			}
 
 			return $user_id;
@@ -196,7 +164,7 @@
 
 			$email_body = wEmailComplete($email_content);
 
-			_mail($user_data['email'] , "Verify Account" , $email_body);
+			// _mail($user_data['email'] , "Verify Account" , $email_body);
 
 			return $res;
 		}
