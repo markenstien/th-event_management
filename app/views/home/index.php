@@ -18,10 +18,7 @@
                     </p>
                     <div class="btn-box">
                       <a href="" class="btn-1">
-                        About Us
-                      </a>
-                      <a href="" class="btn-2">
-                        Get A Quote
+                        Book an event
                       </a>
                     </div>
                   </div>
@@ -47,12 +44,9 @@
                                 It is a long established fact that a reader will be distracted by the readable content
                             </p>
                             <div class="btn-box">
-                            <a href="" class="btn-1">
-                                About Us
-                            </a>
-                            <a href="" class="btn-2">
-                                Get A Quote
-                            </a>
+                              <a href="" class="btn-1">
+                                Book an event
+                              </a>
                             </div>
                         </div>
                     </div>
@@ -77,12 +71,9 @@
                                 It is a long established fact that a reader will be distracted by the readable content
                             </p>
                             <div class="btn-box">
-                            <a href="" class="btn-1">
-                                About Us
-                            </a>
-                            <a href="" class="btn-2">
-                                Get A Quote
-                            </a>
+                              <a href="" class="btn-1">
+                                Book an event
+                              </a>
                             </div>
                         </div>
                     </div>
