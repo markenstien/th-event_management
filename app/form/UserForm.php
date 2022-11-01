@@ -137,7 +137,7 @@
 				'name' => 'address',
 				'class' => 'form-control',
 				'options' => [
-					'label' => 'Address (Brgy*, City*)',
+					'label' => 'Address(City Only)',
 				],
 
 				'attributes' => [
