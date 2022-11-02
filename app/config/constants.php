@@ -42,7 +42,7 @@
 
     define('SITE_NAME' , 'vitalcare.sbs');
 
-    define('COMPANY_NAME' , 'Big Days');
+    define('COMPANY_NAME' , 'iEvent');
 
     define('KEY_WORDS' , 'Event Management');
 

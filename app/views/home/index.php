@@ -11,13 +11,13 @@
                   <div class="detail_box">
                     <h1>
                       Event Management By <br>
-                      <?php echo COMPANY_NAME?>
+                      <span class="company-name"><?php echo COMPANY_NAME?></span>
                     </h1>
                     <p>
                       It is a long established fact that a reader will be distracted by the readable content
                     </p>
                     <div class="btn-box">
-                      <a href="" class="btn-1">
+                      <a href="<?php echo _route('home:book-event')?>" class="btn-1">
                         Book an event
                       </a>
                     </div>

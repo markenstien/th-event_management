@@ -11,6 +11,15 @@
 			return view('home/index');
 		}
 
+		public function bookEvent() {
+			$req = request()->inputs();
+			
+			if(isset($req['package'])) {
+				return $this->view('home/book_event_basic');
+			}
+
+			return $this->view('home/book_event');
+		}
 		public function about() {
 
 		}

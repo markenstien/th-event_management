@@ -26,6 +26,10 @@
     ul.navbar-nav {
         list-style-type: none;
     }
+
+    span.company-name{
+      text-transform: none !important;
+    }
   </style>
 </head>
 
@@ -39,7 +43,7 @@
           <div class="col-lg-11 offset-lg-1">
             <nav class="navbar navbar-expand-lg custom_nav-container ">
               <a class="navbar-brand" href="index.html">
-                <span><?php echo COMPANY_NAME?></span>
+                <span class="company-name"><?php echo COMPANY_NAME?></span>
               </a>
               </a>
               <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"

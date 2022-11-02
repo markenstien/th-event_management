@@ -154,7 +154,8 @@
 		'index' => $controller.'/index',
 		'about' => $controller.'/about',
 		'portfolio' => $controller.'/portfolio',
-		'contact' => $controller.'/contact'
+		'contact' => $controller.'/contact',
+		'book-event' => $controller.'/bookEvent',
 	];
 
 	return $routes;
