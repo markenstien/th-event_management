@@ -8,34 +8,24 @@
 
 		public function __construct()
 		{
+			$this->model = model('AppointmentModel');
+
 			$this->service = model('ServiceModel');
 			$this->service_bundle = model('ServiceBundleModel');
 			$this->category = model('CategoryModel');
 			$this->service_cart_model = model('ServiceCartModel');
-			$this->model = model('AppointmentModel');
-
+			$this->payment_model = model('PaymentModel');
 
 			$this->_form = new AppointmentForm();
 		}
 
 		public function index()
 		{
-			/*
-			*select service that you want
-			*/
 			$auth = auth();
-
-			if( isEqual($auth->user_type , 'patient') )
-			{
-				$appointments = $this->model->getDesc('id' , ['user_id' => $auth->id]);
-			}else
-			{
-				$appointments = $this->model->getDesc('id');
-			}
-
+			$events = $this->model->getDesc('id');
 			$data = [
-				'title' => 'Appointments',
-				'appointments' => $appointments
+				'title' => 'Events',
+				'events' => $events
 			];
 
 			return $this->view('appointment/index' , $data);
@@ -181,30 +171,53 @@
 		public function show($id)
 		{
 			$appointment = $this->model->getComplete($id);
+			
+			$this->data['appointment'] = $appointment;
+			$this->data['title'] = '#'.$appointment->reference. ' | Appointment';
+			$this->data['payments'] = $this->payment_model->getByBill($id);
+			
+			return $this->view('appointment/show' , $this->data);
+		}
 
-			$bill = $appointment->bill;
+		public function addPayment() {
+			$req = request()->inputs();
+			if(isSubmitted()) {
+				$post = request()->posts();
+				$post['file_name'] = 'payment';
+				
+				$addPayment = $this->model->addPayment($post['parent_id'], $post);
 
-			$is_paid = false;
+				if($addPayment) {
+					Flash::set("Payment added");
+				}
+				if(isset($req['redirectTo'])) {
+					return redirect(unseal($req['redirectTo']));
+				}
+			}
+		}
 
-			if( $bill )
-			{
-				$this->bill_model = model('BillModel');
+		public function updatePayment() {
+			$req = request()->inputs();
+			switch($req['action']) {
+				case 'approve':
+					$isOk = $this->model->updateBalance($req['appointment_id'], $req['payment_id']);
+					if($isOk) {
+						Flash::set("Payment approved");
+					}else{
+						Flash::set($this->model->getErrorString(), 'danger');
+					}
+				break;
 
-				$payments = $this->bill_model->getPayments($bill->id);
-
-				$is_paid = isEqual($bill->payment_status , 'paid');
+				case 'cancel':
+					$this->payment_model->decline($req['payment_id']);
+					Flash::set("Payment has been declined");
+				break;
 			}
 
-			$data = [
-				'appointment' => $appointment,
-				'title' => '#'.$appointment->reference. ' | Appointment',
-				'bill'  => $bill,
-				'is_paid' => $is_paid
-			];
+			if(isset($req['redirectTo'])) {
+				return redirect(unseal($req['redirectTo']));
+			}
 
-			if( isset($payments) )
-				$data['payment'] = $payments[0] ?? false;
-			
-			return $this->view('appointment/show' , $data);
+			return request()->return();
 		}
 	}

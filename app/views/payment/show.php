@@ -1,48 +1,48 @@
 <?php build('content')?>
-	<div class="card">
-		<div class="card-header">
-			<h4 class="card-title">Payment Overview</h4>
-		</div>
-		<div class="card-body">
-			<div class="col-md-6 mx-auto">
-				<table class="table table-bordered">
-					<tr>
-						<td>Referece</td>
-						<td><?php echo $payment->reference?></td>
-					</tr>
-					<tr>
-						<td>Amount</td>
-						<td><?php echo amountHTML($payment->amount)?></td>
-					</tr>
-					<tr>
-						<td>Referece</td>
-						<td><?php echo $payment->reference?></td>
-					</tr>
-					<tr>
-						<td>Method</td>
-						<td><?php echo $payment->method?></td>
-					</tr>
-					<tr>
-						<td>Payer name</td>
-						<td><?php echo $payment->acc_name?></td>
-					</tr>
-					<?php if( isEqual($payment->method , 'online') ):?>
+	<div class="col-md-5">
+		<div class="card">
+			<div class="card-header">
+				<h4 class="card-title">Payment Overview</h4>
+			</div>
+			<div class="card-body">
+				<div class="table-responsive">
+					<table class="table table-bordered">
 						<tr>
-							<td>External Reference</td>
+							<td>Referece</td>
+							<td><?php echo $payment->reference?></td>
+						</tr>
+						<tr>
+							<td>Amount</td>
+							<td><?php echo amountHTML($payment->amount)?></td>
+						</tr>
+						<tr>
+							<td>External Referece</td>
 							<td><?php echo $payment->external_reference?></td>
 						</tr>
 						<tr>
-							<td>ORG</td>
-							<td><?php echo $payment->org?></td>
+							<td>Status</td>
+							<td><?php echo $payment->status?></td>
 						</tr>
 						<tr>
-							<td>Bill</td>
+							<td>Action</td>
 							<td>
-								<?php echo anchor( _route('bill:show' , $payment->bill_id) ,'view' , 'Show Bill')?>
+								<?php echo wLinkDefault(_route('payment:approve', $payment->id), 'Approve') ?>| 
+								<?php echo wLinkDefault(_route('payment:decline', $payment->id), 'Decline') ?> 
 							</td>
 						</tr>
-					<?php endif?>
-				</table>
+					</table>
+				</div>
+			</div>
+
+			<div class="card-footer">
+				<h4>Image</h4>
+				<?php if($payment->pictures) :?>
+					<?php foreach($payment->pictures as $key => $row) :?>
+						<?php $imgVal = json_decode($row->meta_value)?>
+						<img src="<?php echo GET_PATH_UPLOAD.DS.'payments/'.$imgVal->name?>"
+							alt="" style="width: 250px">
+					<?php endforeach?>
+				<?php endif?>
 			</div>
 		</div>
 	</div>

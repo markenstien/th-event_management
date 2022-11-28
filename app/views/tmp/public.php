@@ -31,6 +31,9 @@
       text-transform: none !important;
     }
   </style>
+
+  <?php produce('style')?>
+  <?php produce('headers')?>
 </head>
 
 <body>

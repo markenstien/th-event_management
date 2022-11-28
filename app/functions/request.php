@@ -93,6 +93,32 @@
             return FALSE;
         }
     }
+    
+    function urlAddQuery($keyAndVal = '', $toString = false) {
+        
+        $url = $_SERVER['QUERY_STRING'];
+
+        $url_parts = parse_url($url);
+        // If URL doesn't have a query string.
+        if (isset($url_parts['path'])) { // Avoid 'Undefined index: query'
+            parse_str($url_parts['path'], $params);
+        } else {
+            $params = array();
+        }
+
+        if(isset($params['url'])) {
+            unset($params['url']);
+        }
+        
+        
+        $mergedQueryParams = array_merge($params, $keyAndVal);
+
+        if($toString) {
+            return http_build_query($mergedQueryParams);
+        }
+
+        return $mergedQueryParams;
+    }
     function validationFailed()
     {
         FormSession::getInstance();

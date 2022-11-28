@@ -5,7 +5,8 @@
 		public $table = 'appointments';
 
 		public $_fillables = [
-			'category_id',
+			'package',
+			'event',
 			'reference',
 			'name',
 			'description',
@@ -17,11 +18,110 @@
 			'type',
 			'status',
 			'user_id',
+			'selections',
+			'is_paid',
+			'initial_amount',
+			'remaning_balance'
 		];
 
+		/**
+		 * accepted params
+		 * payments, 
+		 */
+		public function createFromMeta($formData, $searchKey, $payment = null) {
+			if(!isset($this->metaModel)) {
+				$this->metaModel = model('MetaModel');
+			}
+			$tmpBooking = $this->metaModel->get($searchKey);
+
+			if(!$tmpBooking) {
+				$this->addError("Invalid request!");
+				return false;
+			}
+
+			$formData['selections'] = json_encode($tmpBooking);
+
+			$appointmentId = $this->save($formData);
+
+			if(!$appointmentId) {
+				$this->addError("Unable to create appointment");
+				return false;
+			}
+
+			if(!is_null($payment)) {
+				$this->addPayment($appointmentId, $payment);	
+			}
+
+			return $appointmentId;
+		}
+
+		public function addPayment($appointmentId, $paymentData) {
+			if (!isset($this->paymentModel)) {
+				$this->paymentModel = model('PaymentModel');
+			}
+
+			$paymentReference = $this->paymentModel->getReference();
+			$paymentId = $this->paymentModel->create([
+				'parent_id' => $appointmentId,
+				'meta_key'  => 'RESERVATION',
+				'reference' => $paymentReference,
+				'amount'   => $paymentData['amount'],
+				'method'   => $paymentData['method'],
+				'external_reference' => $paymentData['external_reference'],
+				// 'acc_no' => $payment['account_number'],
+				// 'acc_name' => $payment['account_name'],
+			]);
+
+			if ($paymentId) {
+
+				//upload image
+				$uploadedImage = upload_image($paymentData['file_name'], PATH_UPLOAD.DS.'payments');
+				if (isEqual($uploadedImage['status'], 'success')) {
+					if(!isset($this->metaModel)) {
+						$this->metaModel = model('MetaModel');
+					}
+					//attach image
+					$this->metaModel->createOrUpdate([
+						'meta_key'  => 'PAYMENT',
+						'meta_id'   => $paymentId,
+						'meta_value' => $uploadedImage['result'],
+						'search_key' => 'PAYMENT_'.$paymentReference,
+					]);
+				}
+				//upload photo
+			}
+		}
+
+		public function updateBalance($id, $paymentId) {
+			if (!isset($this->paymentModel)) {
+				$this->paymentModel = model('PaymentModel');
+			}
+			$payment = $this->paymentModel->get($paymentId);
+
+			if(!$payment) {
+				$this->addError("Payment does not exists");
+				return false;
+			}
+
+			if (isEqual($payment->status, 'pending')) {
+				$this->db->query(
+					"UPDATE {$this->table}
+						SET remaning_balance = (remaning_balance - {$payment->amount})
+					WHERE id = '{$id}'"
+				);
+				$isOkay = $this->db->execute();
+
+				if($isOkay) {
+					$this->paymentModel->approve($paymentId);
+				}
+				return $isOkay;
+			}
+			$this->addError("Unable to update balance");
+			return false;
+		}
+		
 		public function save($appointment_data , $id = null)
 		{
-
 			$fillable_datas = $this->getFillablesOnly($appointment_data);
 
 			if( !is_null($id) ){
@@ -34,12 +134,6 @@
 		
 		public function create($appointment_data)
 		{	
-			extract($appointment_data);
-
-			if(!$this->checkAvailability($date)) 
-				return false;
-			/*check appointment date if in maximum*/
-
 			$reference =  $this->generateRefence();
 
 			$appointment_data['reference'] = $reference;
@@ -51,34 +145,32 @@
 			$_fillables = $this->getFillablesOnly($appointment_data);
 			$appointment_id = parent::store($_fillables);
 
-
 			$appointment_link = _route('appointment:show' , $appointment_id);
 
-			if( $appointment_id )
-			{
-				if( !is_null($user_id) )
-				{
+			// if( $appointment_id )
+			// {
+			// 	if( !is_null($user_id) )
+			// 	{
 
-					$user_model = model('UserModel');
+			// 		$user_model = model('UserModel');
 
-					$user = $user_model->single(['id' => $user_id]);
+			// 		$user = $user_model->single(['id' => $user_id]);
 
-					$email = $user->email;
-					$user_mobile_number = $user->phone_number;
+			// 		$email = $user->email;
+			// 		$user_mobile_number = $user->phone_number;
 					
-					_notify_include_email("Appointment to vitalcare is submitted .#{$reference} appointment reference",[$user_id],[$email] , ['href' => $appointment_link ]);
+			// 		_notify_include_email("Appointment to vitalcare is submitted .#{$reference} appointment reference",[$user_id],[$email] , ['href' => $appointment_link ]);
 
-					send_sms("Appointment to vitalcare is submitted .#{$reference} appointment reference" , [$user_mobile_number]);
-				}
+			// 		send_sms("Appointment to vitalcare is submitted .#{$reference} appointment reference" , [$user_mobile_number]);
+			// 	}
 				
-				_notify_operations("Appointment to vitalcare is submitted .#{$reference} appointment reference" , ['href' => $appointment_link]);
-			}
+			// 	_notify_operations("Appointment to vitalcare is submitted .#{$reference} appointment reference" , ['href' => $appointment_link]);
+			// }
 
 			return $appointment_id;
 		}
 
-		public function createWithBill
-		( $appointment_data )
+		public function createWithBill ( $appointment_data )
 		{
 			$this->bill_model = model('BillModel');
 
@@ -121,17 +213,10 @@
 		public function getComplete( $id )
 		{
 			$appointment = parent::get($id);
-
 			if(!$appointment){
 				$this->addError("appointment not found");
 				return false;
 			}
-
-			//bill
-			$bill = $this->getBill($id);
-
-			$appointment->bill = $bill;
-
 			return $appointment;
 		}
 

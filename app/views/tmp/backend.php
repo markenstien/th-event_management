@@ -149,7 +149,7 @@ License: For each use you must have a valid license purchased only from above li
                 <nav class="bottom-navbar">
                     <div class="container">
                         <ul class="nav page-navigation">
-                            <li class="nav-item">
+                            <!-- <li class="nav-item">
                                 <a class="nav-link" href="<?php echo _route('service:index')?>">
                                     <i class="link-icon" data-feather="box"></i>
                                     <span class="menu-title">Package Items</span>
@@ -160,7 +160,7 @@ License: For each use you must have a valid license purchased only from above li
                                     <i class="link-icon" data-feather="box"></i>
                                     <span class="menu-title">Packages</span>
                                 </a>
-                            </li>
+                            </li> -->
                             <li class="nav-item">
                                 <a class="nav-link" href="<?php echo _route('appointment:index')?>">
                                     <i class="link-icon" data-feather="box"></i>
@@ -175,12 +175,12 @@ License: For each use you must have a valid license purchased only from above li
                                 </a>
                             </li>
 
-                            <li class="nav-item">
+                            <!-- <li class="nav-item">
                                 <a class="nav-link" href="<?php echo _route('category:index')?>">
                                     <i class="link-icon" data-feather="box"></i>
                                     <span class="menu-title">Categories</span>
                                 </a>
-                            </li>
+                            </li> -->
                             
                             <li class="nav-item">
                                 <a href="/ReportController/create" class="nav-link">

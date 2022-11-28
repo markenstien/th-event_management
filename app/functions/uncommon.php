@@ -73,6 +73,30 @@
 	}
 
 
+    function state($name, $value = null) {
+        if (!Session::get('_STATE')) {
+            Session::set('_STATE', []);
+        }
+        
+        if(is_null($value)) {
+            return Session::get('_STATE')[$name] ?? '';
+        } else {
+            $state = Session::get('_STATE');
+            $state[$name] = $value;
+            Session::set('_STATE', $state);
+            return Session::get('_STATE');
+        }
+    }
+
+    function state_delete($name) {
+        if (!Session::get('_STATE')) {
+            Session::set('_STATE', []);
+        }
+        $state = Session::get('_STATE');
+        $state[$name] = '';
+        Session::set('_STATE', $state);
+    }
+
     function accountIsSetup()
     {
         $user = whoIs();
@@ -197,9 +221,9 @@
 		$amountHTML = number_format($amount , 2);
 
 		if($amount < 0) {
-			return "<span style='color:red;'> {$amountHTML} </span>";
+			return "<span style='color:red;'>{$amountHTML}</span>";
 		}else{
-			return "<span style='color:green'>{$amountHTML} </span>";
+			return "<span style='color:green'>{$amountHTML}</span>";
 		}
     }
 

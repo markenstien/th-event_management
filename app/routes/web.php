@@ -70,7 +70,9 @@
 		'edit' => $controller.'/edit',
 		'add' => $controller.'/add',
 		'delete' => $controller.'/destroy',
-		'show'   => $controller.'/show'
+		'show'   => $controller.'/show',
+		'addPayment' => $controller.'/addPayment',
+		'updatePayment' => $controller.'/updatePayment'
 	];
 
 	$controller = '/BillController';
@@ -92,7 +94,9 @@
 		'edit' => $controller.'/edit',
 		'add' => $controller.'/add',
 		'delete' => $controller.'/destroy',
-		'show'   => $controller.'/show'
+		'show'   => $controller.'/show',
+		'approve' => $controller.'/approve',
+		'decline' => $controller.'/decline',
 	];
 	
 

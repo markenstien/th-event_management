@@ -1,9 +1,3 @@
-<?php build('page-control')?>
-	<a href="<?php echo _route('appointment:create')?>" 
-		class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-    class="fas fa-plus fa-sm text-white-50"></i> Create Appointment </a>
-<?php endbuild()?>
-
 <?php build('content')?>
 	<div class="card">
 		<?php Flash::show()?>
@@ -13,28 +7,24 @@
 					<thead>
 						<th>#</th>
 						<th>Reference</th>
+						<th>Event</th>
+						<th>Package</th>
 						<th>Guest</th>
 						<th>Date</th>
-						<th>Time</th>
-						<th>Type</th>
 						<th>Status</th>
-						<th>Email</th>
-						<th>Phone</th>
 						<th>Action</th>
 					</thead>
 
 					<tbody>
-						<?php foreach( $appointments as $key => $appointment) :?>
+						<?php foreach($events as $key => $appointment) :?>
 							<tr>
 								<td><?php echo ++$key?></td>
 								<td><?php echo $appointment->reference?></td>
-								<td><?php echo $appointment->guest_name?></td>
+								<td><?php echo $appointment->event?></td>
+								<td><?php echo $appointment->package?></td>
+								<td><?php echo $appointment->name?></td>
 								<td><?php echo $appointment->date?></td>
-								<td><?php echo is_null($appointment->start_time) ? 'Not Available on previous version' : $appointment->start_time?></td>
-								<td><?php echo $appointment->type?></td>
 								<td><?php echo $appointment->status?></td>
-								<td><?php echo $appointment->guest_email?></td>
-								<td><?php echo $appointment->guest_phone?></td>
 								<td>
 									<?php
 										__([

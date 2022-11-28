@@ -39,15 +39,24 @@
 
 
     define('GLOBALS' , APPROOT.DS.'classes/globals');
-
     define('SITE_NAME' , 'vitalcare.sbs');
-
-    define('COMPANY_NAME' , 'iEvent');
-
+    define('COMPANY_NAME' , 'Big Days');
     define('KEY_WORDS' , 'Event Management');
-
-
     define('DESCRIPTION' , 'Event Management');
-
     define('AUTHOR' , SITE_NAME);
+
+
+    define('GLOBAL_VAR', [
+        'categories' => include_once(APPROOT.DS.'assets/categories.php'),
+        'events' => include_once(APPROOT.DS.'assets/events.php'),
+        'package_group' => include_once(APPROOT.DS.'assets/package_group.php'),
+        'packages' => include_once(APPROOT.DS.'assets/packages.php'),
+        'packageGroupKeys' => [
+            'main_dish' => 'Main Dish',
+            'vegetable_dish' => 'Vegetable Dish',
+            'desert_dish' => 'Dessert Dish',
+            'cake_dish' => 'Cake Dish',
+            'souvenirs' => 'Souvenirs',
+        ]
+    ]);
 ?>

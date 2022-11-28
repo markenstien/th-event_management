@@ -21,7 +21,6 @@
 						<th>Category</th>
 						<th>Descriotion</th>
 						<th>Status</th>
-						<th>Action</th>
 					</thead>
 
 					<tbody>
@@ -33,14 +32,6 @@
 								<td><?php echo $row->category?></td>
 								<td><?php echo $row->description?></td>
 								<td><?php echo $row->is_visible == true ? 'Active' : 'In-Active'?></td>
-								<td>
-									<?php
-										__([
-											btnEdit(_route('service:edit' , $row->id)),
-											btnDelete(_route('service:delete' , $row->id))
-										])
-									?>
-								</td>
 							</tr>
 						<?php endforeach?>
 					</tbody>

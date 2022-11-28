@@ -103,21 +103,26 @@
 
   <section class="about_section layout_padding" id="about">
     <div class="container">
-      <div class="heading_container">
+      <div class="row mt-3">
+        <div class="col-md-8">
         <h2>About Us</h2>
-      </div>
-      <div class="box">
-        <div class="detail-box">
-          <p>
-            It is a long established fact that a reader will be distracted by the readable content of a page when
-            looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of
-            letters,
-          </p>
-          <div>
-            <a href="">
-              about More
-            </a>
+          <div class="detail-box">
+            <p>
+              It is a long established fact that a reader will be distracted by the readable content of a page when
+              looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of
+              letters,
+            </p>
+            <div>
+              <a href="">
+                about More
+              </a>
+            </div>
           </div>
+        </div>
+        <div class="col-md-4">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/UGVQludJ7sM" title="YouTube video player" 
+            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen></iframe>
         </div>
       </div>
     </div>
@@ -125,149 +130,35 @@
   </section>
 
   <!-- end about section -->
-
-  <!-- portfolio section -->
-
-  <section class="portfolio_section layout_padding" id="portfolio">
+  <section class="layout_padding">
     <div class="container">
       <div class="heading_container">
         <h2>
-          Our portfolio
+          Events Catered
         </h2>
         <p>
           minim veniam, quis nostrud exercitation ullamco laboris nisi
         </p>
       </div>
-      <div class="portfolio_container layout_padding2">
-        <div class="box-1">
-          <div class="img-box b-1">
-            <img src="<?php echo _path_upload_get('services/service_cake.jpg')?>" alt="">
-            <div class="btn-box">
-              <a href="#" class="btn-1">
-
-              </a>
+      <div class="row">
+        <?php foreach(GLOBAL_VAR['events'] as $key => $row) :?>
+          <div class="card col-md-3 mb-3">
+            <div class="card-body">
+              <img src="<?php echo _path_upload_get($row['picture'])?>" alt=""
+                style="border-radius:50%"
+                width="100%" class="mb-3">
+              <h5><?php echo $row['name']?></h5>
+              <p class="card-text">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, hic. Eius, iure, 
+                reprehenderit pariatur, est velit deleniti eveniet.
+              </p>
+              <a href="/HomeController/bookEvent?event_id=<?php echo $key?>" class="btn btn-sm btn-primary">Book Event</a>
             </div>
           </div>
-          <div class="img-box b-2">
-            <img src="<?php echo _path_upload_get('services/service_catering_1.jpg')?>" alt="">
-            <div class="btn-box">
-              <a href="#" class="btn-1">
-
-              </a>
-            </div>
-          </div>
-        </div>
-        <div class="box-2">
-          <div class="box-2-top">
-            <div class="img-box b-3">
-            <img src="<?php echo _path_upload_get('services/service_catering.jpg')?>" alt="">
-              <div class="btn-box">
-                <a href="#" class="btn-1">
-
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="box-2-top2">
-            <div class="img-box b-4">
-              <img src="<?php echo _path_upload_get('events/event_bday_3.jpg')?>" alt="">
-              <div class="btn-box">
-                <a href="#" class="btn-1">
-
-                </a>
-              </div>
-            </div>
-          </div>
-          <div class="box-2-btm">
-            <div class="img-box b-5">
-              <img src="<?php echo _path_upload_get('events/event_christening_3.jpg')?>" alt="">
-              <div class="btn-box">
-                <a href="#" class="btn-1">
-
-                </a>
-              </div>
-            </div>
-            <div class="img-box b-6">
-              <img src="<?php echo _path_upload_get('events/event_reunion.jpg')?>" alt="">
-              <div class="btn-box">
-                <a href="" class="btn-1">
-
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="see_btn">
-        <a href="">
-          See More
-        </a>
+        <?php endforeach?>
       </div>
     </div>
-
   </section>
-
-  <!-- end about section -->
-
-  <!-- achieve section -->
-
-  <!-- <section class="achieve_section layout_padding">
-    <div class="container">
-      <div class="heading_container">
-        <h2>
-          ACHIEVEMENTS
-        </h2>
-        <p>
-          minim veniam, quis nostrud exercitation ullamco laboris nisi
-        </p>
-      </div>
-      <div class="achieve_container">
-        <div class="box">
-          <div class="img-box">
-            <img src="<?php echo _path_tmp_root('uliya-html/images/a-1.png')?>" alt="">
-          </div>
-          <div class="detail-box">
-            <h2>
-              1000+
-            </h2>
-            <h6>
-              Photo Session
-            </h6>
-          </div>
-        </div>
-        <div class="box">
-          <div class="img-box">
-            <img src="<?php echo _path_tmp_root('uliya-html/images/a-2.png')?>" alt="">
-          </div>
-          <div class="detail-box">
-            <h2>
-              9000+
-            </h2>
-            <h6>
-              Happy Customers
-            </h6>
-          </div>
-        </div>
-        <div class="box">
-          <div class="img-box">
-            <img src="<?php echo _path_tmp_root('uliya-html/images/a-3.png')?>" alt="">
-          </div>
-          <div class="detail-box">
-            <h2>
-              1000+
-            </h2>
-            <h6>
-              Archive Photographs
-            </h6>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section> -->
-
-  <!-- end achieve section -->
-
-  <!-- client section -->
 
   <section class="client_section layout_padding-bottom">
     <div class="container">
@@ -345,6 +236,85 @@
           </div>
 
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- portfolio section -->
+  <section class="portfolio_section layout_padding" id="portfolio">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+          Our portfolio
+        </h2>
+        <p>
+          minim veniam, quis nostrud exercitation ullamco laboris nisi
+        </p>
+      </div>
+      <div class="portfolio_container layout_padding2">
+        <div class="box-1">
+          <div class="img-box b-1">
+            <img src="<?php echo _path_upload_get('services/service_cake.jpg')?>" alt="">
+            <div class="btn-box">
+              <a href="#" class="btn-1">
+
+              </a>
+            </div>
+          </div>
+          <div class="img-box b-2">
+            <img src="<?php echo _path_upload_get('services/service_catering_1.jpg')?>" alt="">
+            <div class="btn-box">
+              <a href="#" class="btn-1">
+
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="box-2">
+          <div class="box-2-top">
+            <div class="img-box b-3">
+            <img src="<?php echo _path_upload_get('services/service_catering.jpg')?>" alt="">
+              <div class="btn-box">
+                <a href="#" class="btn-1">
+
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="box-2-top2">
+            <div class="img-box b-4">
+              <img src="<?php echo _path_upload_get('events/event_bday_3.jpg')?>" alt="">
+              <div class="btn-box">
+                <a href="#" class="btn-1">
+
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="box-2-btm">
+            <div class="img-box b-5">
+              <img src="<?php echo _path_upload_get('events/event_christening_3.jpg')?>" alt="">
+              <div class="btn-box">
+                <a href="#" class="btn-1">
+
+                </a>
+              </div>
+            </div>
+            <div class="img-box b-6">
+              <img src="<?php echo _path_upload_get('events/event_reunion.jpg')?>" alt="">
+              <div class="btn-box">
+                <a href="" class="btn-1">
+
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="see_btn">
+        <a href="">
+          See More
+        </a>
       </div>
     </div>
   </section>
