@@ -150,9 +150,12 @@
                                     value="<?php echo $item?>"
                                     data-test = "<?php echo $_POST['inclusion'][$key]?>"
                                     <?php
-                                        if(in_array($item, $_POST['inclusion'])) {
-                                          echo 'checked';
+                                        if(isset($_POST['inclusion'])) {
+                                          if(in_array($item, $_POST['inclusion'])) {
+                                            echo 'checked';
+                                          }
                                         }
+                                        
                                       ?>
                                     >
                                   <?php echo $item?>
