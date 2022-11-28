@@ -48,8 +48,9 @@
                 'search_key' => $searchKey
             ]);
 
-            $parent->meta_value = $get;
-
+            if($parent) {
+                $parent->meta_value = $get;
+            }
             return $parent;
         }
     }
