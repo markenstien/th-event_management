@@ -155,7 +155,7 @@
 			], $appointmentId);
 
 			$emailData = wEmailComplete($emailBody);
-			// _mail($formData['email'], COMPANY_NAME.'EVENT - BOOKING', $emailData);
+			_mail($formData['email'], COMPANY_NAME.'EVENT - BOOKING', $emailData);
 
 			return $appointmentId;
 		}
