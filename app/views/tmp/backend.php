@@ -166,20 +166,14 @@ License: For each use you must have a valid license purchased only from above li
                                 </a>
                             </li>
                             
-                            <li class="nav-item">
-                                <a class="nav-link" href="<?php echo _route('payment:index')?>">
-                                    <i class="link-icon" data-feather="box"></i>
-                                    <span class="menu-title">Payments</span>
-                                </a>
-                            </li>
-
-                            <!-- <li class="nav-item">
-                                <a class="nav-link" href="<?php echo _route('category:index')?>">
-                                    <i class="link-icon" data-feather="box"></i>
-                                    <span class="menu-title">Categories</span>
-                                </a>
-                            </li> -->
-                            
+                            <?php if(!isEqual($auth->user_type, 'customer')) :?>
+                              <li class="nav-item">
+                                  <a class="nav-link" href="<?php echo _route('payment:index')?>">
+                                      <i class="link-icon" data-feather="box"></i>
+                                      <span class="menu-title">Payments</span>
+                                  </a>
+                              </li>
+                            <?php endif?>
                             <li class="nav-item">
                                 <a href="/ReportController/create" class="nav-link">
                                     <i class="link-icon" data-feather="hash"></i>
@@ -201,7 +195,7 @@ License: For each use you must have a valid license purchased only from above li
             <!-- partial:../../partials/_footer.html -->
             <footer class="footer border-top">
         <div class="container d-flex flex-column flex-md-row align-items-center justify-content-between py-3 small">
-          <p class="text-muted mb-1 mb-md-0">Copyright © 2021 <?php echo COMPANY_NAME?>.</p>
+          <p class="text-muted mb-1 mb-md-0">Copyright © <?php echo date('Y')?> <?php echo COMPANY_NAME?>.</p>
         </div>
             </footer>
             <!-- partial -->

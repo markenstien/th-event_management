@@ -1,7 +1,9 @@
 <?php 	
 	use Form\AppointmentForm;
+	use Services\UserService;
 
 	load(['AppointmentForm'] , APPROOT.DS.'form');
+	load(['UserService'] , SERVICES);
 
 	class AppointmentController extends Controller
 	{
@@ -21,8 +23,16 @@
 
 		public function index()
 		{
-			$auth = auth();
-			$events = $this->model->getDesc('id');
+			$auth = whoIs();
+
+			if(isEqual($auth->user_type, UserService::CUSTOMER)) {
+				$events = $this->model->all([
+					'user_id' => $auth->id
+				], 'id desc');
+			} else {
+				$events = $this->model->all(null, 'id desc');
+			}
+
 			$data = [
 				'title' => 'Events',
 				'events' => $events
