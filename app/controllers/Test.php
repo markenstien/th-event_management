@@ -17,6 +17,6 @@
 
 			$email_body = wEmailComplete($email_content);
 
-			_mail('chromaticsoftwares@gmail.com' , "Verify Account" , $email_body);
+			_mail('markgonzalespersonal@gmail.com' , "Verify Account" , $email_body);
 		}
 	}

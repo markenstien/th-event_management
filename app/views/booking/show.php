@@ -9,6 +9,7 @@
 <?php endbuild()?>
 <?php build('content')?>
     <div class="col-md-7 mx-auto">
+        <?php Flash::show()?>
         <div class="card">
             <div class="card-header text-center">
                 <h4 class="card-title">Booking Reference : <?php echo $booking->reference?></h4>

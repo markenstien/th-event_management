@@ -52,10 +52,10 @@
     
     const MAILER_AUTH = [
         'username' => 'cx@evtrsv.xyz',
-        'password' => 'q,U2J[$ilT4M',
+        'password' => 'NKnquTv_a#-P',
         'host'     => 'evtrsv.xyz',
         'name'     => COMPANY_NAME,
         'replyTo'  => 'cx@evtrsv.xyz',
-        'replyToName' => 'doNotReply'
+        'replyToName' => COMPANY_NAME
     ];
 ?>
