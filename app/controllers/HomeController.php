@@ -27,23 +27,28 @@
 					$searchKey = random_letter(12);
 					state('event_booking_key', $searchKey);
 				}
-
+				$maxDish = GLOBAL_VAR['package_group']['catering']['main_dish']['rules'][$req['package_id']];
 				if(isset($req['inclusion']['main_dish'])) {
 					$totalDish = count($req['inclusion']['main_dish']);
-					$maxDish = GLOBAL_VAR['package_group']['catering']['main_dish']['rules'][$req['package_id']];
 					if($totalDish > $maxDish) {
 						Flash::set("Max of {$maxDish} for MAIN-DISH {$req['package_id']} Package",'danger','dish');
 						return request()->return();
 					}
+				} else {
+					Flash::set("Must select Main-Dish", 'danger');
+					return request()->return();
 				}
 
-				if(isset($req['inclusion']['vegetable_dish'])) {
+				if (isset($req['inclusion']['vegetable_dish'])) {
 					$totalDish = count($req['inclusion']['vegetable_dish']);
 					$maxDish = GLOBAL_VAR['package_group']['catering']['vegetable_dish']['rules'][$req['package_id']];
 					if($totalDish > $maxDish) {
 						Flash::set("Max of {$maxDish} for VEGETABLE DISH {$req['package_id']} Package",'danger','dish');
 						return request()->return();
 					}
+				} else {
+					Flash::set("Must select Vegetable-Dish", 'danger');
+					return request()->return();
 				}
 
 				if(isset($req['inclusion']['desert_dish'])) {
@@ -89,6 +94,7 @@
 				$errors = [];
 				$payment = null;
 				//checkis 
+
 				if(!empty($req['amount_paid'])){
 					if(upload_empty('payment')) {
 						$errors[] = "You must have a payment proof, if you have paid for downpayment";
@@ -103,7 +109,7 @@
 					}
 
 					$payment = [
-						'amount' => $req['amount_paid'],
+						'amount' => str_to_number($req['amount_paid']),
 						'method' => 'ONLINE',
 						'external_reference' => $req['payment_reference'],
 						'file_name' => 'payment'
@@ -129,6 +135,7 @@
 
 				if ($appointment) {
 					Flash::set("Appointment successful");
+					return redirectRaw($this->appointmentModel->retVal['bookingHref']);
 				} else {
 					Flash::set("Appointment failed", 'danger');
 				}
@@ -149,6 +156,14 @@
 			}
 
 			return $this->view('booking/checkout_event', $this->data);
+		}
+
+		public function showBooking() {
+			$req = request()->inputs();
+			$bookingId = unseal($req['bookingID']);
+			$this->data['booking'] = $this->appointmentModel->getComplete($bookingId);
+		
+			return $this->view('booking/show', $this->data);
 		}
 
 		public function about() {

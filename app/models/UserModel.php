@@ -1,5 +1,8 @@
-<?php 
+<?php
 
+	use Services\UserService;
+	load(['UserService'], SERVICES);
+	
 	class UserModel extends Model
 	{
 
@@ -257,7 +260,7 @@
 					$pfix = 'ADMN';
 				break;
 
-				case 'patient':
+				case UserService::CUSTOMER:
 					$pfix = 'CX';
 				break;
 

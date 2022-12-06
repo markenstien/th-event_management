@@ -70,69 +70,8 @@
     </div>
   </section>
 
-  <!-- end about section -->
 
-  <!-- achieve section -->
-
-  <!-- <section class="achieve_section layout_padding">
-    <div class="container">
-      <div class="heading_container">
-        <h2>
-          ACHIEVEMENTS
-        </h2>
-        <p>
-          minim veniam, quis nostrud exercitation ullamco laboris nisi
-        </p>
-      </div>
-      <div class="achieve_container">
-        <div class="box">
-          <div class="img-box">
-            <img src="<?php echo _path_tmp_root('uliya-html/images/a-1.png')?>" alt="">
-          </div>
-          <div class="detail-box">
-            <h2>
-              1000+
-            </h2>
-            <h6>
-              Photo Session
-            </h6>
-          </div>
-        </div>
-        <div class="box">
-          <div class="img-box">
-            <img src="<?php echo _path_tmp_root('uliya-html/images/a-2.png')?>" alt="">
-          </div>
-          <div class="detail-box">
-            <h2>
-              9000+
-            </h2>
-            <h6>
-              Happy Customers
-            </h6>
-          </div>
-        </div>
-        <div class="box">
-          <div class="img-box">
-            <img src="<?php echo _path_tmp_root('uliya-html/images/a-3.png')?>" alt="">
-          </div>
-          <div class="detail-box">
-            <h2>
-              1000+
-            </h2>
-            <h6>
-              Archive Photographs
-            </h6>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section> -->
-
-  <!-- end achieve section -->
-
-  <!-- client section -->
-
-  <section class="client_section layout_padding-bottom">
+  <section class="client_section layout_padding-bottom" style="margin-top: 50px">
     <div class="container">
       <div class="heading_container">
         <h2>

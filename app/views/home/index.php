@@ -14,13 +14,15 @@
                       <span class="company-name"><?php echo COMPANY_NAME?></span>
                     </h1>
                     <p>
-                      It is a long established fact that a reader will be distracted by the readable content
+                      We are the Big Days Company, and we specialize in small-scale events. Our goal has
+                      always been to make every event successful for everyone involved and simplify the
+                      customer's event planning. We aim to become the go-to event management business
+                      by providing our clients with top-notch service and new, cost-effective concepts. We will
+                      ingrain our humble beginnings by turning ideal events into reality. At the same time,
+                      through the iEvents website, our Company will assist local and small-scale
+                      event-related businesses to promote their products and services through partnerships
+                      and advertising.
                     </p>
-                    <div class="btn-box">
-                      <a href="<?php echo _route('home:book-event')?>" class="btn-1">
-                        Book an event
-                      </a>
-                    </div>
                   </div>
                 </div>
                 <div class="col-md-6 px-0">
@@ -31,68 +33,6 @@
               </div>
             </div>
           </div>
-          <div class="carousel-item">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-5 offset-md-1 ">
-                        <div class="detail_box">
-                            <h1>
-                            Catering Services By <br>
-                            <?php echo COMPANY_NAME?>
-                            </h1>
-                            <p>
-                                It is a long established fact that a reader will be distracted by the readable content
-                            </p>
-                            <div class="btn-box">
-                              <a href="" class="btn-1">
-                                Book an event
-                              </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 px-0">
-                        <div class="img-box">
-                            <img src="<?php echo _path_upload_get('services/service_catering.jpg')?>" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-5 offset-md-1 ">
-                        <div class="detail_box">
-                            <h1>
-                            Catering Services By <br>
-                            <?php echo COMPANY_NAME?>
-                            </h1>
-                            <p>
-                                It is a long established fact that a reader will be distracted by the readable content
-                            </p>
-                            <div class="btn-box">
-                              <a href="" class="btn-1">
-                                Book an event
-                              </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 px-0">
-                        <div class="img-box">
-                            <img src="<?php echo _path_upload_get('services/service_catering.jpg')?>" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-          </div>
-        </div>
-        <div class="carousel_btn-container">
-          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-            <span class="sr-only">Next</span>
-          </a>
         </div>
       </div>
     </section>
@@ -105,18 +45,9 @@
     <div class="container">
       <div class="row mt-3">
         <div class="col-md-8">
-        <h2>About Us</h2>
           <div class="detail-box">
-            <p>
-              It is a long established fact that a reader will be distracted by the readable content of a page when
-              looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of
-              letters,
-            </p>
-            <div>
-              <a href="">
-                about More
-              </a>
-            </div>
+            <img src="<?php echo _path_upload_get('ads/package_basic.jpg')?>" 
+              alt="ads" style="width: 100%">
           </div>
         </div>
         <div class="col-md-4">
@@ -144,7 +75,7 @@
         <?php foreach(GLOBAL_VAR['events'] as $key => $row) :?>
           <div class="card col-md-3 mb-3">
             <div class="card-body">
-              <img src="<?php echo _path_upload_get($row['picture'])?>" alt=""
+              <img src="<?php echo _path_upload_get("events/".$row['picture'])?>" alt=""
                 style="border-radius:50%"
                 width="100%" class="mb-3">
               <h5><?php echo $row['name']?></h5>
@@ -160,7 +91,7 @@
     </div>
   </section>
 
-  <section class="client_section layout_padding-bottom">
+  <section class="client_section layout_padding-bottom" style="margin-top: 50px;">
     <div class="container">
       <div class="heading_container">
         <h2>

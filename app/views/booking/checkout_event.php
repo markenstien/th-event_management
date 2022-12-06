@@ -107,7 +107,7 @@
                                 'class' => 'form-control',
                                 'readonly' => true
                             ]);
-                            Form::small('You can Pay atleast 10% of the total amount.' . "(".amountHTML(($package['price'] * .10)).")");
+                            Form::small('You can Pay atleast 10% of the total amount.' . "(".amountHTML(($package['price'] * .30)).")");
                         ?>
                         <label for="#">Pay through the following.</label>
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -195,7 +195,7 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">Selections</h4>
-                    <a href="/HomeController/checkoutEvent?event_code=<?php echo $booked->search_key?>">Change Selections</a>
+                    <a href="/HomeController/bookEvent?event_id=<?php echo $selection->event_id?>&package_id=<?php echo $selection->package_id?>">Change Selections</a>
                 </div>
                 <div class="card-body">
                     <?php

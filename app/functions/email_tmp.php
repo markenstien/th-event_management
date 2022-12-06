@@ -4,7 +4,7 @@
 
     function wEmailHeader()
     {
-        $logo = URL.DS.'public/logo2.png';
+        $logo = _path_upload_get('logo_default.png');
 
         $COMPANY_NAME = COMPANY_NAME;
 
@@ -22,7 +22,7 @@
     
     function wEmailFooter()
     {
-        $logo = URL.DS.'public/logo2.png';
+        $logo = _path_upload_get('logo_default.png');
 
         $COMPANY_NAME = COMPANY_NAME;
 

@@ -61,9 +61,6 @@
                       <a class="nav-link" href="<?php echo _route('home:index')?>#home">Home <span class="sr-only">(current)</span></a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="<?php echo _route('home:index')?>#about"> About</a>
-                    </li>
-                    <li class="nav-item">
                       <a class="nav-link" href="<?php echo _route('home:index')?>#portfolio"> Portfolio </a>
                     </li>
                     <li class="nav-item">
@@ -72,13 +69,7 @@
                     <li class="nav-item">
                       <a class="nav-link" href="<?php echo _route('auth:login')?>">Login</a>
                     </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="<?php echo _route('user:register')?>">Register</a>
-                    </li>
                   </ul>
-                  <!-- <form class="form-inline">
-                    <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit"></button>
-                  </form> -->
                 </div>
 
               </div>

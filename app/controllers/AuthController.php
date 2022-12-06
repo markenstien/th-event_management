@@ -65,9 +65,8 @@
 		public function logout()
 		{
 			session_destroy();
-
 			
 			Flash::set("Successfully logged-out");
-			return redirect( _route('auth:login') );
+			return redirect( _route('home:index') );
 		}
 	}

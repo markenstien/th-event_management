@@ -47,6 +47,10 @@
         return $email;
     }
 
+    function str_to_number($string) {
+        return preg_replace("/[^0-9a-zA-Z@._]/", "", trim($string));
+    }
+
     function str_escape($value)
     {
         $search = array("\\",  "\x00", "\n",  "\r",  "'",  '"', "\x1a");

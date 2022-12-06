@@ -149,18 +149,16 @@ License: For each use you must have a valid license purchased only from above li
                 <nav class="bottom-navbar">
                     <div class="container">
                         <ul class="nav page-navigation">
-                            <!-- <li class="nav-item">
-                                <a class="nav-link" href="<?php echo _route('service:index')?>">
-                                    <i class="link-icon" data-feather="box"></i>
-                                    <span class="menu-title">Package Items</span>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?php echo _route('home:index', null, [
+                                  ''=> '#about'
+                                ])?>">
+                                    <span class="menu-title">
+                                     <span class="btn btn-sm btn-warning"> <i class="link-icon" data-feather="box"></i>Shop</span>
+                                    </span>
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="<?php echo _route('service-bundle:index')?>">
-                                    <i class="link-icon" data-feather="box"></i>
-                                    <span class="menu-title">Packages</span>
-                                </a>
-                            </li> -->
+
                             <li class="nav-item">
                                 <a class="nav-link" href="<?php echo _route('appointment:index')?>">
                                     <i class="link-icon" data-feather="box"></i>

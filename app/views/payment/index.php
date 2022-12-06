@@ -12,7 +12,7 @@
 						<th>Payer</th>
 						<th>External Reference</th>
 						<th>ORG</th>
-						<th>Bill</th>
+						<th>Event</th>
 						<th>Action</th>
 					</thead>
 
@@ -27,7 +27,7 @@
 								<td><?php echo $row->external_reference?></td>
 								<td><?php echo $row->org?></td>
 								<td>
-									<a href="<?php echo _route('bill:show' , $row->bill_id)?>">Show Bill</a>
+									<a href="<?php echo _route('appointment:show' , $row->parent_id)?>">Show Bill</a>
 								</td>
 								<td>
 									<?php

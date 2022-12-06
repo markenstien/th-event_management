@@ -42,10 +42,10 @@
                     <?php foreach(GLOBAL_VAR['packages'] as $key => $row) :?>
                     <div class="card col-md-4 mb-3">
                         <div class="card-body">
-                        <img src="<?php echo _path_upload_get($row['picture'])?>" alt=""
+                        <img src="<?php echo _path_upload_get('package_logo/'.$row['picture'])?>" alt=""
                             style="border-radius:50%"
                             width="100%" class="mb-3">
-                        <h5><?php echo $row['name']?></h5>
+                        <h5><strong><?php echo $row['name']?></strong></h5>
                         <p class="card-text">
                             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, hic. Eius, iure, 
                             reprehenderit pariatur, est velit deleniti eveniet.
@@ -66,6 +66,7 @@
                       $packageGroupSecondary = $packageGroup['secondary'];
                   ?>
                   <div class="container">
+                    <?php Flash::show()?>
                       <div class="card mb-2">
                           <div class="card-header">
                               <div class="row">
@@ -168,7 +169,7 @@
                   </div>
               <?php endif?>
             </section>
-            <section class="client_section layout_padding-bottom">
+            <section class="client_section layout_padding-bottom" style="margin-top: 80px;">
               <div class="container">
                 <div class="heading_container">
                   <h2>

@@ -30,7 +30,7 @@
                     ],
                     [
                         'name' => 'sweet and sour fish filet',
-                        'image' => 'beef broccoli.jpg'
+                        'image' => 'sweet and sour fish filet-modified.png'
                     ],
                     [
                         'name' => 'Beef Steak',
@@ -40,6 +40,21 @@
                         'name' => 'Chicken Adobo',
                         'image' => 'chicken adobo.jpg'
                     ],
+
+                    [
+                        'name' => 'Pork Adobo',
+                        'image' => 'pork adobo.jpg'
+                    ],
+
+                    [
+                        'name' => 'Beef Caldereta',
+                        'image' => 'beef kaldereta-modified.png'
+                    ],
+
+                    [
+                        'name' => 'Beef Brocoli',
+                        'image' => 'beef broccoli-modified.png'
+                    ]
                 ],
                 'rules' => [
                     'basic_package' => 2,
@@ -66,6 +81,18 @@
                     [
                         'name' => 'Buttered Mixed -Vegetable with Quail Eggs',
                         'image' => 'Vegetable with Quail Eggs.jpg'
+                    ], 
+                    [
+                        'name' => 'Eggplant Ensalda',
+                        'image' => 'Eggplant Ensalada-modified.png'
+                    ],
+                    [
+                        'name' => 'Chopsuey Modified',
+                        'image' => 'chopsuey-modified.png'
+                    ],
+                    [
+                        'name' => 'Braised Vegetable',
+                        'image' => 'Braised Vegetables-modified.png'
                     ]
                 ],
                 'rules' => [
@@ -78,12 +105,13 @@
 
         'secondary' => [
             'desert_dish' => [
-                'name' => 'Desert Dish',
+                'name' => 'Desert',
                 'items' => [
                     'Fruit Salad',
                     'Coffee Jelly',
                     'Buko Pandan',
-                    'Mango Sago Delight'
+                    'Mango Sago Delight',
+                    'Sliced Fruits'
                 ],
                 'rules' => [
                     'basic_package' => 1,
@@ -92,7 +120,7 @@
                 ]
             ],
             'cake_dish' => [
-                'name' => 'Cake Dish',
+                'name' => 'Cake and Cupcake Flavor',
                 'items' => [
                     'Chocolate',
                     'Vanilla',

@@ -5,13 +5,13 @@
             'description' => 'It is a long established fact that a reader will be distracted by the readable content of a page when
             looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of
             letters',
-            'picture' => 'services/service_cake.jpg'
+            'picture' => 'new/Birthday-modified.png'
         ],
 
         'christening' => [
             'name' => 'Christening',
             'description' => '',
-            'picture' => 'services/service_cake.jpg'
+            'picture' => 'new/Christening-modified.png'
         ],
 
         'moving-up' => [
@@ -19,37 +19,37 @@
             'description' => 'It is a long established fact that a reader will be distracted by the readable content of a page when
             looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of
             letters',
-            'picture' => 'services/service_cake.jpg'
+            'picture' => 'new/Moving Up-modified.png'
         ],
 
         'gender_reveal' => [
             'name' => 'Gender Reveal',
             'description' => '',
-            'picture' => 'services/service_cake.jpg'
+            'picture' => 'new/Gender Reveal-modified.png'
         ],
 
         'reuinion' => [
             'name' => 'Reunion',
             'description' => '',
-            'picture' => 'services/service_cake.jpg'
+            'picture' => 'new/Reunion-modified.png'
         ],
 
         'house_blessing' => [
             'name' => 'Home Blessing',
             'description' => '',
-            'picture' => 'services/service_cake.jpg'
+            'picture' => 'new/House Blessing-modified.png'
         ],
 
         'farewell_party' => [
             'name' => 'Farewell Party',
             'description' => '',
-            'picture' => 'services/service_cake.jpg'
+            'picture' => 'new/Farewell Party-modified.png'
         ],
 
         'christmat_party' => [
             'name' => 'Christmas Party',
             'description' => '',
-            'picture' => 'services/service_cake.jpg'
+            'picture' => 'new/Christmas Party-modified.png'
         ]
     ]
 ?>

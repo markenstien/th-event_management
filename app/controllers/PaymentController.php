@@ -8,27 +8,10 @@
 			$this->appointment = model('AppointmentModel');
 		}
 
-		public function create() {
-			// $req = request()->inputs();
-			// if(isSubmitted()) {
-			// 	$post = request()->posts();
-			// 	$isOk = $this->payment->create($post);
-
-			// 	if($isOk) {
-			// 		$post['file_name'] = 'payment';
-			// 		$this->appointment->addPayment($post['parent_id'], $post);
-			// 	}
-			// 	if(isset($req['redirectTo'])) {
-			// 		return redirect(unseal($req['redirectTo']));
-			// 	}
-			// }
-		}
 		public function index()
-		{	
-			$auth = auth();
-
-
+		{
 			$payments = $this->payment->getDesc('id');
+			
 			$data = [
 				'title' => 'Payments',
 				'payments' => $payments

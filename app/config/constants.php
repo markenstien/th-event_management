@@ -6,16 +6,6 @@
 
     define('DEFAULT_REPLY_TO' , '');
 
-    const MAILER_AUTH = [
-        'username' => 'super@vitalcare.sbs',
-        'password' => 'c;6*CBlLMFFz',
-        'host'     => 'vitalcare.sbs',
-        'name'     => 'VitalCare',
-        'replyTo'  => 'super@vitalcare.sbs',
-        'replyToName' => 'VitalCare'
-    ];
-
-
     const ITEXMO = [
         'key' => 'ST-MARKG387451_V6YZ8',
         'pwd' => '(7]8bu4]ja'
@@ -59,4 +49,13 @@
             'souvenirs' => 'Souvenirs',
         ]
     ]);
+    
+    const MAILER_AUTH = [
+        'username' => 'cx@evtrsv.xyz',
+        'password' => 'q,U2J[$ilT4M',
+        'host'     => 'evtrsv.xyz',
+        'name'     => COMPANY_NAME,
+        'replyTo'  => 'cx@evtrsv.xyz',
+        'replyToName' => 'doNotReply'
+    ];
 ?>

@@ -1,4 +1,7 @@
 <?php 
+	use Services\UserService;
+	load(['UserService'], SERVICES);
+
 	class AppointmentModel extends Model
 	{
 
@@ -33,7 +36,7 @@
 				$this->metaModel = model('MetaModel');
 			}
 			$tmpBooking = $this->metaModel->get($searchKey);
-
+			$downPayment = 0;
 			if(!$tmpBooking) {
 				$this->addError("Invalid request!");
 				return false;
@@ -41,8 +44,58 @@
 
 			$formData['selections'] = json_encode($tmpBooking);
 
-			$appointmentId = $this->save($formData);
+			$eventName = GLOBAL_VAR['events'][$formData['event']]['name'];
+			$packageName = GLOBAL_VAR['packages'][$formData['package']]['name'];
 
+			$appointmentId = $this->save($formData);
+			$bookingHref = URL.'/HomeController/showBooking?bookingID='.seal($appointmentId).'&token='.$this->reference;
+			
+			$emailBody = "<h3>Thank you for your Booking your event.</h3>";
+			$emailBody .= "<h4>Booking Rereference : #{$this->reference}</h4>";
+			$emailBody .= "<p>Keep this email so you will have reference.</p>";
+			$emailBody .= "<p><a href='{$bookingHref}'>Booking details</a></p>";
+
+			$this->retVal['bookingHref'] = $bookingHref;
+
+			if(!is_null($payment)) {
+				$downPayment = $payment['amount'];
+			}
+			$emailBody .= <<<EOF
+				<table>
+					<tr>
+						<td>Reference : </td>
+						<td>{$this->reference}</td>
+					</tr>
+					<tr>
+						<td>Event : </td>
+						<td>{$eventName}</td>
+					</tr>
+					<tr>
+						<td>Package : </td>
+						<td>{$packageName}</td>
+					</tr>
+					<tr>
+						<td colspan='2'>Customer Details</td>
+					</tr>
+					<tr>
+						<td>Name : </td>
+						<td>{$formData['name']}</td>
+					</tr>
+
+					<tr>
+						<td>Event Price : </td>
+						<td>{$formData['initial_amount']}</td>
+					</tr>
+
+					<tr>
+						<td>Down Payment : </td>
+						<td>{$downPayment}</td>
+					</tr>
+				</table>
+			EOF;
+			$emailBody .= "</table>";
+
+			// $emailBody = wEmailComplete($emailBody);
 			if(!$appointmentId) {
 				$this->addError("Unable to create appointment");
 				return false;
@@ -51,6 +104,58 @@
 			if(!is_null($payment)) {
 				$this->addPayment($appointmentId, $payment);	
 			}
+
+			//check if account is created by email other wise create new
+
+			if(!isset($this->userModel)) {
+				$this->userModel = model('UserModel');
+			}
+
+			$userData = $this->userModel->single([
+				'email' => $formData['email'],
+			]);
+			//create an account
+			if (!$userData) {
+				$fullName = explode(' ', $formData['name']);
+
+				$lastName = end($fullName);
+				unset($fullName[count($fullName) - 1]);
+				$firstName = implode(' ', $fullName);
+				$username = strtoupper($lastName.=random_number(3));
+				$password = 'bigdays';
+
+				$userId = $this->userModel->create([
+					'first_name' => $firstName,
+					'last_name'  => $lastName,
+					'email' => $formData['email'],
+					'username' => $username,
+					'password' => $password,
+					'user_type' => UserService::CUSTOMER
+				]);
+
+				if($userId) {
+					$loginHREF = URL.DS.'AuthController/login';
+					$emailBody .= "<h3 style='margin-top:15px'> An Account is created for your </h3>";
+					$emailBody .= "<h4> Account Details</h4>";
+					$emailBody .= <<<EOF
+						<ul>
+							<li>Username : {$username}</li>
+							<li>Password : {$password}</li>
+						</ul>
+						<small>You can change your password upon login, <a href='{$loginHREF}'>login here</a></small>
+					EOF;
+
+					$userData = $this->userModel->get($userId);
+				}
+			}
+
+			//update event info
+			parent::update([
+				'user_id' => $userData->id
+			], $appointmentId);
+
+			$emailData = wEmailComplete($emailBody);
+			// _mail($formData['email'], COMPANY_NAME.'EVENT - BOOKING', $emailData);
 
 			return $appointmentId;
 		}
@@ -67,9 +172,7 @@
 				'reference' => $paymentReference,
 				'amount'   => $paymentData['amount'],
 				'method'   => $paymentData['method'],
-				'external_reference' => $paymentData['external_reference'],
-				// 'acc_no' => $payment['account_number'],
-				// 'acc_name' => $payment['account_name'],
+				'external_reference' => $paymentData['external_reference']
 			]);
 
 			if ($paymentId) {
@@ -143,6 +246,7 @@
 			$appointment_data['status'] = $status ?? 'pending';
 
 			$_fillables = $this->getFillablesOnly($appointment_data);
+			$this->reference = $reference;
 			$appointment_id = parent::store($_fillables);
 
 			$appointment_link = _route('appointment:show' , $appointment_id);
