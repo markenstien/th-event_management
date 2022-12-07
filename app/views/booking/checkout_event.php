@@ -107,7 +107,9 @@
                                 'class' => 'form-control',
                                 'readonly' => true
                             ]);
-                            Form::small('You can Pay atleast 30% of the total amount.' . "(".($package['price'] * .30).")");
+
+                            $packagePrice =str_to_number($package['price']);
+                            Form::small('You can Pay atleast 30% of the total amount.' . "(".($packagePrice * .30).")");
                         ?>
                         <label for="#">Pay through the following.</label>
                         <ul class="nav nav-tabs" id="myTab" role="tablist">
