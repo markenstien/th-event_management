@@ -35,7 +35,6 @@
     define('DESCRIPTION' , 'Event Management');
     define('AUTHOR' , SITE_NAME);
 
-
     define('GLOBAL_VAR', [
         'categories' => include_once(APPROOT.DS.'assets/categories.php'),
         'events' => include_once(APPROOT.DS.'assets/events.php'),

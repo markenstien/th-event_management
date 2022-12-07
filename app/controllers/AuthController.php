@@ -20,6 +20,9 @@
 
 		public function login()
 		{
+			if(whoIs()) {
+				return redirect('/DashboardController');
+			}
 			if( isSubmitted() )
 			{
 				$post = request()->posts();

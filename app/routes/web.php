@@ -72,7 +72,10 @@
 		'delete' => $controller.'/destroy',
 		'show'   => $controller.'/show',
 		'addPayment' => $controller.'/addPayment',
-		'updatePayment' => $controller.'/updatePayment'
+		'updatePayment' => $controller.'/updatePayment',
+
+		'approve' => $controller.'/approve',
+		'cancel' => $controller.'/cancel',
 	];
 
 	$controller = '/ContactController';
@@ -83,6 +86,18 @@
 		'delete' => $controller.'/destroy',
 		'show'   => $controller.'/show',
 	];
+
+	$controller = '/MessageController';
+	$routes['message'] = [
+		'index' => $controller.'/index',
+		'create' => $controller.'/create',
+		'edit' => $controller.'/edit',
+		'delete' => $controller.'/destroy',
+		'show'   => $controller.'/show',
+		'send'   => $controller.'/send'
+	];
+
+	
 
 	$controller = '/BillController';
 	$routes['bill'] = [
@@ -169,6 +184,15 @@
 		'portfolio' => $controller.'/portfolio',
 		'contact' => $controller.'/contact',
 		'book-event' => $controller.'/bookEvent',
+	];
+
+	$controller = '/DashboardController';
+	$routes['dashboard'] = [
+		'index' => $controller.'/index',
+		'create' => $controller.'/create',
+		'edit' => $controller.'/edit',
+		'delete' => $controller.'/destroy',
+		'show'   => $controller.'/show',
 	];
 
 	return $routes;

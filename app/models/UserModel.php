@@ -62,18 +62,13 @@
 			if(!$validated) return false;
 		
 
-			if( !is_null($id) )
+			if(!is_null($id))
 			{
 				//change password also
-				if( empty($fillable_datas['password']) )
+				if(empty($fillable_datas['password']))
 					unset($fillable_datas['password']);
-
 				$res = parent::update($fillable_datas , $id);
-
-				if( isset($user_data['profile']) ){
-					$this->uploadProfile('profile' , $id);
-				}
-
+				
 				$user_id = $id;
 			}else
 			{
@@ -88,15 +83,15 @@
 
 		private function validate(&$user_data , $id = null)
 		{	
-			if(isset($user_data['email']))
-			{
-				$is_exist = $this->getByKey('email' , $user_data['email'])[0] ?? '';
+			// if(isset($user_data['email']))
+			// {
+			// 	$is_exist = $this->getByKey('email' , $user_data['email'])[0] ?? '';
 
-				if( $is_exist && !isEqual($is_exist->id , $id) ){
-					$this->addError("Email {$user_data['email']} already used");
-					return false;
-				}
-			}
+			// 	if( $is_exist && !isEqual($is_exist->id , $id) ){
+			// 		$this->addError("Email {$user_data['email']} already used");
+			// 		return false;
+			// 	}
+			// }
 
 			if(isset($user_data['username']))
 			{
@@ -108,22 +103,22 @@
 				}
 			}
 
-			if(isset($user_data['phone_number']))
-			{
-				$user_data['phone_number'] = str_to_mobile($user_data['phone_number']);
+			// if(isset($user_data['phone_number']))
+			// {
+			// 	$user_data['phone_number'] = str_to_mobile($user_data['phone_number']);
 
-				if( !is_mobile_number($user_data['phone_number']) ){
-					$this->addError("Invalid Phone Number {$user_data['phone_number']}");
-					return false;
-				}
+			// 	if( !is_mobile_number($user_data['phone_number']) ){
+			// 		$this->addError("Invalid Phone Number {$user_data['phone_number']}");
+			// 		return false;
+			// 	}
 
-				$is_exist = $this->getByKey('phone_number' , $user_data['phone_number'])[0] ?? '';
+			// 	$is_exist = $this->getByKey('phone_number' , $user_data['phone_number'])[0] ?? '';
 
-				if( $is_exist && !isEqual($is_exist->id , $id) ){
-					$this->addError("Phonne Number {$user_data['phone_number']} already used");
-					return false;
-				}
-			}
+			// 	if( $is_exist && !isEqual($is_exist->id , $id) ){
+			// 		$this->addError("Phonne Number {$user_data['phone_number']} already used");
+			// 		return false;
+			// 	}
+			// }
 
 			return true;
 		}
@@ -325,4 +320,11 @@
 			return $auth;
 		}
 
+		public function total() {
+			$this->db->query(
+				"SELECT count(id) as total from {$this->table}
+					WHERE user_type = 'customer'"
+			);
+			return $this->db->single()->total ?? 0;
+		}
 	}

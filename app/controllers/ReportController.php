@@ -1,4 +1,6 @@
-<?php 
+<?php
+	use Services\ReportService;
+	load(['ReportService'], SERVICES);
 
 	class ReportController extends Controller
 	{	
@@ -7,6 +9,7 @@
 		{
 
 			$this->model = model('ReportModel');
+			$this->reportService = new ReportService();
 		}
 
 		public function create()
@@ -15,41 +18,14 @@
 			$data = [];
 
 			if (isset($_GET['report_create'])) {
-
-				$results = $this->model->createReport( $_GET );
-				$summary = $this->model->summarizeResults($results);
-
-
-				$sessions = $results['sessions'];
-				$appointments = $results['appointments'];
-				$services_catered = $results['services_catered'];
-
-
-				if( !empty($_GET['report_type']) )
-				{
-					$report_type = $_GET['report_type'];
-
-					$report_grouped  = [
-						'sessions' => $this->model->groupResults($sessions , $report_type, 'date_created'),
-						'appointments' => $this->model->groupResults($appointments , $report_type , 'date'),
-						'services_catered' => $this->model->groupResults($services_catered , $report_type , 'created_at'),
-					];
-				}
-				
+				$request = request()->inputs();
+				$reports = $this->reportService->generate($request['start_date'], $request['end_date']);
+				$summary = $this->reportService->summarize($reports);
 
 				$data = [
-					'title' => 'Create Report',
-					'results' => $results,
-					'summary' => $summary,
-					'filter'  => $_GET
+					'reports' => $reports,
+					'summary' => $summary
 				];
-
-				if( isset($report_grouped) )
-					$data['report_grouped'] = $report_grouped;
-			}
-
-			if( isset($data['results']) ){
-				return $this->view('report/index_skeleton' , $data);
 			}
 			
 			return $this->view('report/index' , $data);

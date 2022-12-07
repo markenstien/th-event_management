@@ -118,38 +118,27 @@
 			if( isSubmitted() )
 			{
 				$post = request()->posts();
-
-				$post['profile'] = 'profile';
-				
 				$res = $this->model->save($post , $id);
 
 				if($res) {
 					Flash::set( "User updated !");
-					return redirect( _route('user:show' , $id));
+					return redirect( _route('user:edit' , $id));
 				}else{
 					Flash::set( $this->model->getErrorString() );
 				}
 			}
 
 			$user = $this->model->get($id);
-			$user_address = $this->adddess_model->get($user->address_id);
-
 
 			$this->_form->setUrl(_route('user:edit' , $id));
 
 			$this->_form->addId($id);
 			$this->_form->setValueObject($user);
-
-			if( $user_address )
-			$this->_form_address->setValueObject($user_address);
-
-			$this->_form_address->remove('submit');
-
+			
 			$data = [
 				'title' => 'Create User',
 				'form'  => $this->_form,
 				'user'   => $user,
-				'form_address' => $this->_form_address
 			];
 
 			return $this->view('user/create_edit' , $data);

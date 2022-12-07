@@ -1,15 +1,26 @@
 <?php
     $appointment = $data['appointment'];
     $payments = $data['payments'];
+    $user = $data['user'];
 ?>
 <div class="row">
     <div class="col-md-8">
         <div class="card">
             <div class="card-header">
                 <h4 class="card-title">General</h4>
-                <span class="badge bg-warning"><?php echo $appointment->status?></span>
+                <?php if(isEqual($appointment->status, 'arrived')) :?>
+                    <span class="badge bg-success">Approved</span>
+                    <?php else:?>
+                    <span class="badge bg-warning"><?php echo $appointment->status?></span>
+                <?php endif?>
             </div>
             <div class="card-body">
+                <?php if(!isEqual(whoIs('user_type'), 'customer')) :?>
+                <div style="text-align: right;">
+                    <a href="<?php echo _route('appointment:approve', $appointment->id)?>" class="btn btn-primary btn-sm"> Approve </a>
+                    <a href="<?php echo _route('appointment:cancel', $appointment->id)?>" class="btn btn-warning btn-sm"> Cancel </a>
+                </div>
+                <?php endif?>
                 <div class="table-responsive">
                     <table class="table table-bordered">
                         <tr>
@@ -111,12 +122,16 @@
                                         <td><?php echo $row->amount?></td>
                                         <td><?php echo $row->status?></td>
                                         <td>
-                                            <?php echo wLinkDefault(_route('payment:show', $row->id), 'Show');?> | 
-                                            <?php echo wLinkDefault(_route('appointment:updatePayment', null, [
-                                                'action' => 'approve',
-                                                'payment_id' => $row->id,
-                                                'appointment_id' => $appointment->id
-                                            ]), 'Approve')?>
+                                            <?php echo wLinkDefault(_route('payment:show', $row->id), 'Show');?>
+                                            <?php 
+                                                if(!whoIs('user_type','customer')) {
+                                                    echo wLinkDefault(_route('appointment:updatePayment', null, [
+                                                        'action' => 'approve',
+                                                        'payment_id' => $row->id,
+                                                        'appointment_id' => $appointment->id
+                                                    ]), 'Approve');
+                                                }
+                                            ?>
                                         </td>
                                     </tr>
                                 <?php endforeach?>
@@ -141,11 +156,11 @@
                         </tr>
                         <tr>
                             <td>Email</td>
-                            <td><?php echo $appointment->email?></td>
+                            <td><?php echo $user->email?></td>
                         </tr>
                         <tr>
                             <td>Mobile</td>
-                            <td><?php echo $appointment->phone_number?></td>
+                            <td><?php echo $user->phone_number?></td>
                         </tr>
                     </table>
                 </div>

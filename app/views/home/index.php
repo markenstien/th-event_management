@@ -14,12 +14,12 @@
                       <span class="company-name"><?php echo COMPANY_NAME?></span>
                     </h1>
                     <p>
-                      We are the Big Days Company, and we specialize in small-scale events. Our goal has
+                      We are the iEvents Company, and we specialize in small-scale events. Our goal has
                       always been to make every event successful for everyone involved and simplify the
                       customer's event planning. We aim to become the go-to event management business
                       by providing our clients with top-notch service and new, cost-effective concepts. We will
                       ingrain our humble beginnings by turning ideal events into reality. At the same time,
-                      through the iEvents website, our Company will assist local and small-scale
+                      through the Big Days website, our Company will assist local and small-scale
                       event-related businesses to promote their products and services through partnerships
                       and advertising.
                     </p>
@@ -47,14 +47,13 @@
       <div class="row mt-3">
         <div class="col-md-8">
           <div class="detail-box">
-            <img src="<?php echo _path_upload_get('ads/package_basic.jpg')?>" 
+            <img src="<?php echo _path_upload_get('ads/main_ads.png')?>" 
               alt="ads" style="width: 100%">
           </div>
         </div>
         <div class="col-md-4">
-          <iframe width="560" height="315" src="https://www.youtube.com/embed/UGVQludJ7sM" title="YouTube video player" 
-            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen></iframe>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/ALdgdGgF1a8?start=8" 
+          title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
       </div>
     </div>

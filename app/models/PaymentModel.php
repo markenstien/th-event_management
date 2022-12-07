@@ -101,4 +101,12 @@
 				'status' => 'approved'
 			], $id);
 		}
+
+		public function amountTotal() {
+			$this->db->query(
+				"SELECT SUM(amount) as total_amount FROM {$this->table}
+					WHERE status = 'approved' "
+			);
+			return $this->db->single()->total_amount ?? 0;
+		}
 	}

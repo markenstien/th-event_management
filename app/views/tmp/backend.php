@@ -64,16 +64,8 @@ License: For each use you must have a valid license purchased only from above li
                         </a>
                         <?php if($auth) :?>
                             <?php $notifications = _notify_pull_items($auth->id)?>
-                            <form class="search-form">
-                                <div class="input-group">
-                                    <div class="input-group-text">
-                                      <i data-feather="search"></i>
-                                    </div>
-                                    <input type="text" class="form-control" id="navbarForm" placeholder="Search here...">
-                                </div>
-                            </form>
                             <ul class="navbar-nav">
-                                  <li class="nav-item dropdown">
+                                  <li class="nav-item dropdown" style="display:none">
                                     <a class="nav-link dropdown-toggle" href="#" id="notificationDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                       <i data-feather="bell"></i>
                                       <?php if($notifications) :?>
@@ -149,6 +141,7 @@ License: For each use you must have a valid license purchased only from above li
                 <nav class="bottom-navbar">
                     <div class="container">
                         <ul class="nav page-navigation">
+                          <?php if(isEqual($auth->user_type, 'customer')) :?>
                             <li class="nav-item">
                                 <a class="nav-link" href="<?php echo _route('home:index', null, [
                                   ''=> '#about'
@@ -158,6 +151,16 @@ License: For each use you must have a valid license purchased only from above li
                                     </span>
                                 </a>
                             </li>
+                          <?php endif?>
+
+                          <?php if(!isEqual($auth->user_type, 'customer')) :?>
+                            <li class="nav-item">
+                              <a class="nav-link" href="<?php echo _route('dashboard:index')?>">
+                                    <i class="link-icon" data-feather="box"></i>
+                                    <span class="menu-title">Dashboard</span>
+                                </a>
+                            </li>
+                          <?php endif?>
 
                             <li class="nav-item">
                                 <a class="nav-link" href="<?php echo _route('appointment:index')?>">

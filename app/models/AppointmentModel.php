@@ -377,4 +377,24 @@
 				return true;
 			}
 		}
+
+		public function total() {
+			$this->db->query(
+				"SELECT count(id) as total from {$this->table}
+					WHERE status = 'arrived'"
+			);
+			return $this->db->single()->total ?? 0;
+		}
+
+		public function approve($id) {
+			return parent::update([
+				'status' => 'arrived'
+			], $id);
+		}
+
+		public function cancel($id) {
+			return parent::update([
+				'status' => 'cancelled'
+			], $id);
+		}
 	}

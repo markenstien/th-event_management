@@ -15,8 +15,10 @@
 			$this->service = model('ServiceModel');
 			$this->service_bundle = model('ServiceBundleModel');
 			$this->category = model('CategoryModel');
+			$this->messageModel = model('MessageModel');
 			$this->service_cart_model = model('ServiceCartModel');
 			$this->payment_model = model('PaymentModel');
+			$this->userModel = model('UserModel');
 
 			$this->_form = new AppointmentForm();
 		}
@@ -41,6 +43,18 @@
 			return $this->view('appointment/index' , $data);
 		}
 
+
+		public function approve($id) {
+			$this->model->approve($id);
+			Flash::set("Appointment Cancelled");
+			return request()->return();
+		}
+
+		public function cancel($id) {
+			$this->model->cancel($id);
+			Flash::set("Appointment Cancelled");
+			return request()->return();
+		}
 
 		public function createWithBill()
 		{
@@ -180,11 +194,21 @@
 
 		public function show($id)
 		{
+			$page = request()->input('page') ?? 'overview';
+
 			$appointment = $this->model->getComplete($id);
 			
 			$this->data['appointment'] = $appointment;
 			$this->data['title'] = '#'.$appointment->reference. ' | Appointment';
 			$this->data['payments'] = $this->payment_model->getByBill($id);
+			$this->data['page'] = $page;
+			$this->data['id'] = $id;
+
+			$this->data['user'] = $this->userModel->get($appointment->user_id);
+			
+			$this->data['messages'] = $this->messageModel->all([
+				'parent_id' => $id
+			], 'timesent asc');
 			
 			return $this->view('appointment/show' , $this->data);
 		}

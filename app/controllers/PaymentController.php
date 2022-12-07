@@ -40,11 +40,13 @@
 
 		public function approve($id) {
 			$this->payment->approve($id);
+			Flash::set("Payment Approved");
 			return request()->return();
 		}
 
 		public function decline($id) {
 			$this->payment->decline($id);
+			Flash::set("Payment Declined");
 			return request()->return();
 		}
 	}

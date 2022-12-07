@@ -17,38 +17,13 @@
 					<div class="card-body">
 						<div class="form-group">
 							<?php
-								__( $form->getRow('profile') );
-							?>
-						</div>
-
-						<div class="form-group">
-							<?php
 								__( $form->getRow('first_name') );
 							?>
 						</div>
 
 						<div class="form-group">
 							<?php
-								__( $form->getRow('middle_name') );
-							?>
-						</div>
-
-
-						<div class="form-group">
-							<?php
 								__( $form->getRow('last_name') );
-							?>
-						</div>
-
-						<div class="form-group">
-							<?php
-								__( $form->getRow('birthdate') );
-							?>
-						</div>
-
-						<div class="form-group">
-							<?php
-								__( $form->getRow('gender') );
 							?>
 						</div>
 					</div>
@@ -72,18 +47,6 @@
 						</div>
 					</div>
 				</div>
-
-				<div class="card">
-					<div class="card-header">
-						<h4 class="card-title">Address</h4>
-					</div>
-
-					<div class="card-body">
-						<div class="form-group">
-							<?php echo __( $form_address->getFormItems('col') )?>
-						</div>
-					</div>
-				</div>
 			</div>
 
 			<div class="col-md-5">
@@ -94,24 +57,12 @@
 
 					<div class="card-body">
 						<div class="form-group">
-							<?php __( $form->getRow('user_type' , [
-								'input' => [
-									'attributes' => [
-										'data-target' => '#id_container_licensed_number'
-									]
-								]
-							]) )?>
+							<?php __( $form->getRow('username'))?>
 						</div>
 
-						<div id="id_container_licensed_number" class="form-group"
-						<?php echo !isEqual($user->user_type ?? null , 'doctor') ? 'style="display:none"' : ''?>>
-							<?php
-								__( $doc_form->getRow('license_number') );
-							?>
-						</div>
 						<div class="form-group">
 							<?php
-								__( $form->getRow('password') );
+								__( $form->getRow('password'));
 							?>
 						</div>
 
