@@ -66,7 +66,7 @@
                     <?php foreach($inclusions as $incIndex => $categories) :?>                        <tr>
                             <?php
                                 if (!isEqual($incIndex, ['main_dish','vegetable_dish'])) {
-                                    echo '<td>'.$incIndex.'</td>'; 
+                                    echo '<td>'.GLOBAL_VAR['packageGroupKeys'][$incIndex].'</td>'; 
                                     ?> 
                                         <td>
                                             <div>
@@ -75,7 +75,7 @@
                                         </td>
                                     <?php
                                 } else {
-                                    echo '<td>'.$incIndex.'</td>'; 
+                                    echo '<td>'.GLOBAL_VAR['packageGroupKeys'][$incIndex].'</td>'; 
                                     echo '<td>';
                                     foreach($categories as $catKey => $catVal) :
                                         ?>

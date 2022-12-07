@@ -4,7 +4,7 @@
             'name' => 'Basic Package',
             'description' => '',
             'picture' => '',
-            'price' => '11,999.00',
+            'price' => '11999.00',
             'number_of_attendees' => 20
         ],
         
@@ -12,7 +12,7 @@
             'name' => 'Standard Package',
             'description' => '',
             'picture' => '',
-            'price' => '17,999.00',
+            'price' => '17999.00',
             'number_of_attendees' => 30
         ],
 
@@ -20,7 +20,7 @@
             'name' => 'Premium Package',
             'description' => '',
             'picture' => '',
-            'price' => '22,999.00',
+            'price' => '22999.00',
             'number_of_attendees' => 40
         ],
     ];
