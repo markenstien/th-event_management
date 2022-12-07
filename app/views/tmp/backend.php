@@ -176,12 +176,12 @@ License: For each use you must have a valid license purchased only from above li
                                       <span class="menu-title">Payments</span>
                                   </a>
                               </li>
+                              <li class="nav-item">
+                                  <a href="/ReportController/create" class="nav-link">
+                                      <i class="link-icon" data-feather="hash"></i>
+                                      <span class="menu-title">Reports</span></a>
+                              </li>
                             <?php endif?>
-                            <li class="nav-item">
-                                <a href="/ReportController/create" class="nav-link">
-                                    <i class="link-icon" data-feather="hash"></i>
-                                    <span class="menu-title">Reports</span></a>
-                            </li>
                         </ul>
                     </div>
                 </nav>
