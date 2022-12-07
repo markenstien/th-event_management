@@ -43,6 +43,7 @@
 
   <section class="about_section layout_padding" id="about">
     <div class="container">
+      <h4>Advertisement</h4>
       <div class="row mt-3">
         <div class="col-md-8">
           <div class="detail-box">
@@ -64,12 +65,7 @@
   <section class="layout_padding">
     <div class="container">
       <div class="heading_container">
-        <h2>
-          Events Catered
-        </h2>
-        <p>
-          minim veniam, quis nostrud exercitation ullamco laboris nisi
-        </p>
+        <h2>Events Catered </h2>
       </div>
       <div class="row">
         <?php foreach(GLOBAL_VAR['events'] as $key => $row) :?>
@@ -79,10 +75,6 @@
                 style="border-radius:50%"
                 width="100%" class="mb-3">
               <h5><?php echo $row['name']?></h5>
-              <p class="card-text">
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, hic. Eius, iure, 
-                reprehenderit pariatur, est velit deleniti eveniet.
-              </p>
               <a href="/HomeController/bookEvent?event_id=<?php echo $key?>" class="btn btn-sm btn-primary">Book Event</a>
             </div>
           </div>
@@ -178,9 +170,6 @@
         <h2>
           Our portfolio
         </h2>
-        <p>
-          minim veniam, quis nostrud exercitation ullamco laboris nisi
-        </p>
       </div>
       <div class="portfolio_container layout_padding2">
         <div class="box-1">

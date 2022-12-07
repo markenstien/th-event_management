@@ -75,7 +75,8 @@
     function wEmailBody( $content = '' , $styles = [] )
     {
         return <<<EOF
-            <div style="margin: 0px auto;font-family: tahoma , verdana , arial;background: #fff; padding: 20px 30px;line-height:160%">
+            <div style="margin: 0px auto;font-family: tahoma , verdana , arial;background: #fff; 
+                padding: 20px 30px;line-height:160%">
                 {$content}
             </div>
         EOF;

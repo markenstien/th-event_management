@@ -5,6 +5,10 @@
     border: 1px solid #eee;
     padding: 4px;
   }
+
+  #dishImage img{
+    border-radius: 50% !important;
+  }
 </style>
 <?php endbuild()?>
 <?php build('content')?>
@@ -36,7 +40,6 @@
                 <div class="container">
                 <div class="heading_container">
                     <h2>Packages</h2>
-                    <p>minim veniam, quis nostrud exercitation ullamco laboris nisi</p>
                 </div>
                 <div class="row space-around">
                     <?php foreach(GLOBAL_VAR['packages'] as $key => $row) :?>
@@ -47,8 +50,8 @@
                             width="100%" class="mb-3">
                         <h5><strong><?php echo $row['name']?></strong></h5>
                         <p class="card-text">
-                            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Beatae, hic. Eius, iure, 
-                            reprehenderit pariatur, est velit deleniti eveniet.
+                          <div>Price : <?php echo $row['price']?></div>
+                          <div>Attendees : <?php echo $row['number_of_attendees']?></div>
                         </p>
                         <a href="?<?php echo urlAddQuery(['package_id' => $key], true)?>" class="btn btn-sm btn-primary">Select Package</a>
                         </div>
@@ -65,7 +68,7 @@
                       $packageGroup = GLOBAL_VAR['package_group'];
                       $packageGroupSecondary = $packageGroup['secondary'];
                   ?>
-                  <div class="container">
+                  <div class="container" id="dishImage">
                     <?php Flash::show()?>
                       <div class="card mb-2">
                           <div class="card-header">
@@ -82,15 +85,7 @@
 
                       <div class="card">
                           <div class="card-header">
-                              <div class="row">
-                                  <div class="col-md-6"><h4 class="card-title">CATERING</h4></div>
-                                  <div class="col-md-6">
-                                      <a href="#">MAIN DISH</a> | 
-                                      <a href="#">VEGETABLE</a> | 
-                                      <a href="#">DESERT</a> | 
-                                      <a href="#">CAKE</a>
-                                  </div>
-                              </div>
+                            <h4 class="card-title">CATERING</h4>
                           </div>
 
                           <div class="card-body">
@@ -175,9 +170,6 @@
                   <h2>
                     Testimonial
                   </h2>
-                  <p>
-                    minim veniam, quis nostrud exercitation ullamco laboris nisi
-                  </p>
                 </div>
                 <div class="layout_padding2-top">
                   <div id="carouselExample2Controls" class="carousel slide" data-ride="carousel">
@@ -255,9 +247,6 @@
                   <h2>
                     Our portfolio
                   </h2>
-                  <p>
-                    minim veniam, quis nostrud exercitation ullamco laboris nisi
-                  </p>
                 </div>
                 <div class="portfolio_container layout_padding2">
                   <div class="box-1">

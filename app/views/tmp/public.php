@@ -96,20 +96,20 @@
       <div class="">
         <div class="row">
           <div class="col-md-8 mx-auto">
-            <form action="">
+            <form method="post" action="<?php echo _route('contact:create')?>">
               <div class="contact_form-container">
                 <div>
                   <div>
-                    <input type="text" placeholder="Name">
+                    <input type="text" placeholder="Name" name="name">
                   </div>
                   <div>
-                    <input type="text" placeholder="Phone Number">
+                    <input type="text" placeholder="Phone Number" name="phone">
                   </div>
                   <div>
-                    <input type="email" placeholder="Email">
+                    <input type="email" placeholder="Email" name="email">
                   </div>
                   <div class="">
-                    <input type="text" placeholder="Message" class="message_input">
+                    <input type="text" placeholder="Message" class="message_input" name="message">
                   </div>
                   <div class=" d-flex justify-content-center ">
                     <button type="submit">

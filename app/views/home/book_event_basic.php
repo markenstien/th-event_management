@@ -175,9 +175,6 @@
         <h2>
           Testimonial
         </h2>
-        <p>
-          minim veniam, quis nostrud exercitation ullamco laboris nisi
-        </p>
       </div>
       <div class="layout_padding2-top">
         <div id="carouselExample2Controls" class="carousel slide" data-ride="carousel">

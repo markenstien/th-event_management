@@ -75,6 +75,15 @@
 		'updatePayment' => $controller.'/updatePayment'
 	];
 
+	$controller = '/ContactController';
+	$routes['contact'] = [
+		'index' => $controller.'/index',
+		'create' => $controller.'/create',
+		'edit' => $controller.'/edit',
+		'delete' => $controller.'/destroy',
+		'show'   => $controller.'/show',
+	];
+
 	$controller = '/BillController';
 	$routes['bill'] = [
 		'index' => $controller.'/index',

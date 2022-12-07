@@ -95,7 +95,7 @@
 
                     <div class="form-group">
                         <?php
-                            Form::label('Notes to the team *');
+                            Form::label('Note the team about the design or theme of cake, cupcake, souvenir, and decorations *');
                             Form::textarea('notes', '', ['class' => 'form-control' , 'required' => true , 'rows' => 4]);
                         ?>
                     </div>
