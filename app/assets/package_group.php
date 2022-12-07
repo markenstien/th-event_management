@@ -76,7 +76,7 @@
                     ],
                     [
                         'name' => 'Chopsuey',
-                        'image' => 'Stir Fried Mixed Vegetable.jpg'
+                        'image' => 'chopsuey.jpg'
                     ],
                     [
                         'name' => 'Buttered Mixed -Vegetable with Quail Eggs',
