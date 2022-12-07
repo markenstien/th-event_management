@@ -25,11 +25,16 @@
 							<td>Status</td>
 							<td><?php echo $payment->status?></td>
 						</tr>
-						<?php if(!isEqual(whoIs('user_type'), 'customer')) :?>
+						<?php if(!isEqual(whoIs('user_type'), 'customer') && isEqual($payment->status,'pending')) :?>
 						<tr>
 							<td>Action</td>
 							<td>
-								<?php echo wLinkDefault(_route('payment:approve', $payment->id), 'Approve') ?>| 
+								<?php echo wLinkDefault(_route('appointment:update-payment', null, [
+									'appointment_id' => $payment->parent_id,
+									'payment_id' => $payment->id,
+									'action' => 'approve',
+									'redirectTo' => seal(_route('appointment:show', $payment->parent_id))
+								]), 'Approve') ?>| 
 								<?php echo wLinkDefault(_route('payment:decline', $payment->id), 'Decline') ?> 
 							</td>
 						</tr>

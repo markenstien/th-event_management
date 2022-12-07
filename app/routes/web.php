@@ -72,8 +72,7 @@
 		'delete' => $controller.'/destroy',
 		'show'   => $controller.'/show',
 		'addPayment' => $controller.'/addPayment',
-		'updatePayment' => $controller.'/updatePayment',
-
+		'update-payment' => $controller.'/updatePayment',
 		'approve' => $controller.'/approve',
 		'cancel' => $controller.'/cancel',
 	];

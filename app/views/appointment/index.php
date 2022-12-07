@@ -9,6 +9,7 @@
 						<th>Reference</th>
 						<th>Event</th>
 						<th>Package</th>
+						<th>Remaining Balance</th>
 						<th>Guest</th>
 						<th>Date</th>
 						<th>Status</th>
@@ -22,6 +23,7 @@
 								<td><?php echo $appointment->reference?></td>
 								<td><?php echo $appointment->event?></td>
 								<td><?php echo $appointment->package?></td>
+								<td><?php echo amountHTML($appointment->remaning_balance)?></td>
 								<td><?php echo $appointment->name?></td>
 								<td><?php echo $appointment->date?></td>
 								<td><?php echo $appointment->status?></td>

@@ -9,9 +9,8 @@
 						<th>Reference</th>
 						<th>Amount</th>
 						<th>Method</th>
-						<th>Payer</th>
+						<th>Status</th>
 						<th>External Reference</th>
-						<th>ORG</th>
 						<th>Event</th>
 						<th>Action</th>
 					</thead>
@@ -23,9 +22,8 @@
 								<td><?php echo $row->reference?></td>
 								<td><?php echo amountHTML($row->amount)?></td>
 								<td><?php echo $row->method?></td>
-								<td><?php echo $row->acc_name?></td>
+								<td><?php echo $row->status?></td>
 								<td><?php echo $row->external_reference?></td>
-								<td><?php echo $row->org?></td>
 								<td>
 									<a href="<?php echo _route('appointment:show' , $row->parent_id)?>">Show Bill</a>
 								</td>

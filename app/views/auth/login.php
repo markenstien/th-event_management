@@ -3,7 +3,7 @@
 		<div class="col-md-7 mx-auto">
 			<?php Flash::show()?>
 			<div class="card">
-				<div class="card-header">
+				<div class="card-header text-center">
 					<h4 class="card-title">Login-Form</h4>
 					<p>Welcome to <span class="badge bg-warning"><?php echo COMPANY_NAME?></span> Portal</p>
 					<?php echo wLinkDefault(_route('home:index'), 'Back to main page')?>
@@ -12,7 +12,10 @@
 					<?php 
 						__( $form->start() );
 					?>
-
+					<div style="text-align: center">
+						<img src="<?php echo _path_upload_get('logo_default.png')?>" 
+							alt="logo" style="width: 150px;">
+						</div>
 					<div class="form-group">
 						<?php
 							__( $form->getCol('username') );
