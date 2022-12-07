@@ -36,7 +36,7 @@
                 $teamHTML = wEmailBody($teamHTML);
 
                 $toCustomer = _mail($post['email'], "You sent an Inquiry to ". COMPANY_NAME, $customerHTML);
-                $toTheTeam = _mail($post['email'], "A customer sent and Inquiry", $teamHTML);
+                $toTheTeam = _mail('bigdayswebsite@gmail.com', "A customer sent and Inquiry", $teamHTML);
 
                 Flash::set("If your email provided is valid, you will recieve and email from us, regarding your inquiry, thank you.");
                 if (isset($req['returnTo'])) {
