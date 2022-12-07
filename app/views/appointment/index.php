@@ -27,11 +27,7 @@
 								<td><?php echo $appointment->status?></td>
 								<td>
 									<?php
-										__([
-											btnView(_route('appointment:show' , $appointment->id)),
-											btnEdit(_route('appointment:edit' , $appointment->id)),
-										]);
-									?>
+										 echo wLinkDefault(_route('appointment:edit', $appointment->id));?>
 								</td>
 							</tr>
 						<?php endforeach?>
