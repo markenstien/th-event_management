@@ -24,7 +24,9 @@
 			'selections',
 			'is_paid',
 			'initial_amount',
-			'remaning_balance'
+			'remaning_balance',
+			'phone_number',
+			'email'
 		];
 
 		/**

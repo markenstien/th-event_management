@@ -78,9 +78,23 @@
                                     echo '<td>'.GLOBAL_VAR['packageGroupKeys'][$incIndex].'</td>'; 
                                     ?> 
                                         <td>
-                                            <div>
-                                                <label for="#"><?php echo $categories?></label>
-                                            </div>
+                                            <?php
+                                                if (is_array($categories)) {
+                                                    foreach($categories as $catKey => $catVal) {
+                                                        ?>
+                                                            <div>
+                                                                <label for="#"><?php echo $catVal?></label>
+                                                            </div>
+                                                        <?php
+                                                    }
+                                                } else {
+                                                    ?> 
+                                                        <div>
+                                                            <label for="#"><?php echo $categories?></label>
+                                                        </div>
+                                                    <?php
+                                                }
+                                            ?>
                                         </td>
                                     <?php
                                 } else {
@@ -165,11 +179,11 @@
                         </tr>
                         <tr>
                             <td>Email</td>
-                            <td><?php echo $user->email?></td>
+                            <td><?php echo $appointment->email?></td>
                         </tr>
                         <tr>
                             <td>Mobile</td>
-                            <td><?php echo $user->phone_number?></td>
+                            <td><?php echo $appointment->phone_number?></td>
                         </tr>
                     </table>
                 </div>

@@ -70,23 +70,37 @@
                             <tr>
                                 <?php
                                     if (!isEqual($incIndex, ['main_dish','vegetable_dish'])) {
-                                        echo '<td>'.$incIndex.'</td>'; 
+                                        echo '<td>'.GLOBAL_VAR['packageGroupKeys'][$incIndex].'</td>'; 
                                         ?> 
                                             <td>
-                                                <div>
-                                                    <label for="#"><?php echo $categories?></label>
-                                                </div>
+                                                <?php
+                                                    if (is_array($categories)) {
+                                                        foreach($categories as $catKey => $catVal) {
+                                                            ?>
+                                                                <div>
+                                                                    <label for="#"><?php echo $catVal?></label>
+                                                                </div>
+                                                            <?php
+                                                        }
+                                                    } else {
+                                                        ?> 
+                                                            <div>
+                                                                <label for="#"><?php echo $categories?></label>
+                                                            </div>
+                                                        <?php
+                                                    }
+                                                ?>
                                             </td>
                                         <?php
                                     } else {
-                                        echo '<td>'.$incIndex.'</td>'; 
+                                        echo '<td>'.GLOBAL_VAR['packageGroupKeys'][$incIndex].'</td>'; 
                                         echo '<td>';
-                                        foreach($categories as $catKey => $catVal) :
-                                            ?>
-                                                <div>
-                                                    <label for="#"><?php echo $catVal?></label>
-                                                </div>
-                                            <?php
+                                        foreach ($categories as $catKey => $catVal) :
+                                           ?> 
+                                            <div>
+                                                <label for="#"><?php echo $catVal?></label>
+                                            </div>
+                                           <?php
                                             endforeach;
                                         echo '</td>';
                                     }

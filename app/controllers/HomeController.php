@@ -116,7 +116,7 @@
 						'file_name' => 'payment'
 					];
 				}
-
+				
 				$appointment = $this->appointmentModel->createFromMeta([
 					'event' => $req['event_id'],
 					'package' => $req['package_id'],
@@ -124,7 +124,7 @@
 					'email' => $req['email'],
 					'phone_number' => $req['phone_number'],
 					'date' => $req['date'],
-					'time' => $req['time'],
+					'start_time' => $req['time'],
 					'address' => $req['address'],
 					'description' => $req['notes'],
 					'initial_amount' => $req['amount'],
