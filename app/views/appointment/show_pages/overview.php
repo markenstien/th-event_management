@@ -212,6 +212,7 @@
 
             Form::hidden('parent_id', $appointment->id);
             Form::hidden('meta_key', 'RESERVATION');
+            Form::hidden('method', 'online');
         ?>
             <div class="form-group">
                 <?php
