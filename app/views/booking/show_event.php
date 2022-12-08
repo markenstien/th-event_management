@@ -140,20 +140,35 @@
                               <?php $labelid = "{$itemKey}".random_letter(5);?>
                               <div class="inclusion">
                                 <label for="<?php echo $labelid?>">
-                                  <input  type="checkbox" name="inclusion[<?php echo $key?>]" 
+                                  <?php if(isEqual($key, ['desert_dish','souvenirs'])) :?>
+                                  <input  type="checkbox" name="inclusion[<?php echo $key?>][]" 
                                     id="<?php echo $labelid?>"
                                     <?php echo isset($catGroup['rules']) ? 'data-max='.$catGroup['rules'][$_GET['package_id']]: ''?>"
                                     value="<?php echo $item?>"
-                                    data-test = "<?php echo $_POST['inclusion'][$key]?>"
+                                    data-test = "<?php  $_POST['inclusion'][$key]?>"
                                     <?php
-                                        if(isset($_POST['inclusion'])) {
-                                          if(in_array($item, $_POST['inclusion'])) {
+                                        if(isset($_POST['inclusion'][$key])) {
+                                          if(in_array($item, $_POST['inclusion'][$key])) {
                                             echo 'checked';
                                           }
                                         }
-                                        
                                       ?>
                                     >
+                                    <?php else :?>
+                                      <input  type="radio" name="inclusion[<?php echo $key?>]" 
+                                        id="<?php echo $labelid?>"
+                                        <?php echo isset($catGroup['rules']) ? 'data-max='.$catGroup['rules'][$_GET['package_id']]: ''?>"
+                                        value="<?php echo $item?>"
+                                        data-test = "<?php echo $_POST['inclusion'][$key]?>"
+                                        <?php
+                                            if(isset($_POST['inclusion'])) {
+                                              if(in_array($item, $_POST['inclusion'])) {
+                                                echo 'checked';
+                                              }
+                                            }
+                                          ?>
+                                        >
+                                    <?php endif?>
                                   <?php echo $item?>
                                 </label>
                               </div>
@@ -192,12 +207,8 @@
                                 Aloz den
                               </h4>
                               <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                                labore
-                                et
-                                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                cillum
+                              Sample Feedback Sample Feedback Sample Feedback ,Sample Feedback Sample Feedback Sample Feedback,
+                              Sample Feedback Sample Feedback Sample Feedback Sample Feedback
                               </p>
                             </div>
                           </div>
@@ -207,12 +218,8 @@
                                 Aloz den
                               </h4>
                               <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                                labore
-                                et
-                                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                cillum
+                              Sample Feedback Sample Feedback Sample Feedback ,Sample Feedback Sample Feedback Sample Feedback,
+                              Sample Feedback Sample Feedback Sample Feedback Sample Feedback
                               </p>
                             </div>
                           </div>
@@ -222,12 +229,8 @@
                                 Aloz den
                               </h4>
                               <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                                labore
-                                et
-                                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-                                aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                cillum
+                                Sample Feedback Sample Feedback Sample Feedback ,Sample Feedback Sample Feedback Sample Feedback,
+                              Sample Feedback Sample Feedback Sample Feedback Sample Feedback
                               </p>
                             </div>
                           </div>

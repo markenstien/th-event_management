@@ -1,4 +1,5 @@
 <?php build('content') ?>
+    <?php Flash::show()?>
     <div class="row">
         <div class="col-md-4 grid-margin stretch-card">
             <div class="card">
@@ -53,7 +54,7 @@
             </div>
         </div>
     </div>
-
+    
     <h1>Summary</h1>
     <div class="row">
         <div class="col-md-6">

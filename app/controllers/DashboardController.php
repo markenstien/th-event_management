@@ -10,6 +10,10 @@
 			$this->payment_model = model('PaymentModel');
 			$this->user_model = model('UserModel');
 			$this->reportService = new ReportService();
+			
+			if(isEqual(whoIs('user_type'),'customer')) {
+				return redirect(_route('appointment:index'));
+			}
 		}
 
 		public function index()

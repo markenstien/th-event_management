@@ -53,6 +53,15 @@
                         </tr>
                     </table>
                 </div>
+                <p>
+                    <strong>Note the team about the design or theme of cake, cupcake, souvenir, and decorations</strong>
+                    <?php echo $appointment->description?>
+                </p>
+                <hr>
+                <p>
+                    <strong>Address</strong>
+                    <?php echo $appointment->address?>
+                </p>
             </div>
 
             <div class="card-footer">

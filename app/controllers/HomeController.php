@@ -23,6 +23,8 @@
 			
 			if(isSubmitted()) {
 				$stateId = state('event_booking_key');
+				$this->data['post'] = request()->posts();
+				
 				if(!$stateId) {
 					$searchKey = random_letter(12);
 					state('event_booking_key', $searchKey);
@@ -35,7 +37,7 @@
 						return request()->return();
 					}
 				} else {
-					Flash::set("Must select Main-Dish", 'danger');
+					Flash::set("Must select Main-Dish", 'danger', 'dish');
 					return request()->return();
 				}
 
@@ -47,12 +49,12 @@
 						return request()->return();
 					}
 				} else {
-					Flash::set("Must select Vegetable-Dish", 'danger');
+					Flash::set("Must select Vegetable-Dish", 'danger','dish');
 					return request()->return();
 				}
 
 				if(isset($req['inclusion']['desert_dish'])) {
-					$totalDish = count($req['inclusion']['vegetable_dish']);
+					$totalDish = count($req['inclusion']['desert_dish']);
 					$maxDish = GLOBAL_VAR['package_group']['secondary']['desert_dish']['rules'][$req['package_id']];
 					if($totalDish > $maxDish) {
 						Flash::set("Max of {$maxDish} for DESERT DISH {$req['package_id']} Package",'danger','dish');
@@ -60,12 +62,11 @@
 					}
 				}
 
-				$this->metaModel->createOrUpdate([
+				$isCreated = $this->metaModel->createOrUpdate([
 					'meta_value' => $req,
 					'search_key' => state('event_booking_key'),
 					'meta_key' => 'BOOKING_SESSION'
 				], $stateId);
-
 			}
 
 			if(isset($req['event_id'])) 

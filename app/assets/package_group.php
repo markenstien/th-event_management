@@ -87,10 +87,6 @@
                         'image' => 'Eggplant Ensalada-modified.png'
                     ],
                     [
-                        'name' => 'Chopsuey Modified',
-                        'image' => 'chopsuey-modified.png'
-                    ],
-                    [
                         'name' => 'Braised Vegetable',
                         'image' => 'Braised Vegetables-modified.png'
                     ]
@@ -105,7 +101,7 @@
 
         'secondary' => [
             'desert_dish' => [
-                'name' => 'Desert',
+                'name' => 'Dessert',
                 'items' => [
                     'Fruit Salad',
                     'Coffee Jelly',

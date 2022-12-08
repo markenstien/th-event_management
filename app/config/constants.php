@@ -43,8 +43,8 @@
         'packageGroupKeys' => [
             'main_dish' => 'Main Dish',
             'vegetable_dish' => 'Vegetable Dish',
-            'desert_dish' => 'Dessert Dish',
-            'cake_dish' => 'Cake Dish',
+            'desert_dish' => 'Dessert',
+            'cake_dish' => 'Cake and Cupcake Flavor',
             'souvenirs' => 'Souvenirs',
         ]
     ]);

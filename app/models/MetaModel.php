@@ -18,12 +18,21 @@
                 $_fillables['meta_value'] = json_encode($_fillables['meta_value']);
             }
 
-            if(empty($id)) {
-                return parent::createOrUpdate($_fillables);
-            } else {
-                return parent::createOrUpdate($_fillables, [
+            //check if exists
+            if(!is_null($id)) {
+                $isExist = parent::single([
                     'search_key' => $id
                 ]);
+
+                if($isExist) {
+                    return parent::createOrUpdate($_fillables, [
+                        'search_key' => $id
+                    ]);
+                } else {
+                    return parent::createOrUpdate($_fillables);
+                }
+            } else {
+                return parent::createOrUpdate($_fillables);
             }
         }
 

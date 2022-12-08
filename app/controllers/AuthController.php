@@ -36,7 +36,7 @@
 				{
 					Flash::set( "Welcome Back !" . auth('first_name'));
 				}
-
+				
 				if(isEqual(whoIs('user_type'),'customer')) {
 					return redirect(_route('appointment:index'));
 				}
@@ -49,7 +49,7 @@
 				'url' => _route('auth:login')
 			]);
 
-			$form->customSubmit('Login' , 'login' , [
+			$form->customSubmit('Login' , 'submit' , [
 				'class' => 'btn btn-primary'
 			]);
 
